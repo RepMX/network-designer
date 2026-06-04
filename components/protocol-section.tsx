@@ -20,8 +20,6 @@ export function ProtocolSection() {
           </p>
         </div>
         
-        {/* Subtle glow on hover */}
-        <div className="bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <div className="mx-auto max-w-5xl space-y-12">
           
           {/* Highlighted Phase 1: 30-Day Tuning */}
