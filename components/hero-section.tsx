@@ -28,7 +28,7 @@ export function HeroSection() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
               >
                 <a href="#contact">
-                  Request a Diagnostic Audit
+                  Request an Audit
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
@@ -40,7 +40,7 @@ export function HeroSection() {
               >
                 <a href="#blueprints">
                   <FileText className="h-4 w-4" />
-                  View Reference Blueprints
+                  View Blueprints
                 </a>
               </Button>
             </div>
