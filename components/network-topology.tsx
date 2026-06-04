@@ -39,10 +39,10 @@ export function NetworkTopology() {
     const connections = [
       [0, 1], [0, 2],
       [1, 3], [1, 4], [1, 5],
-      [3, 6],
+      [3, 8],
       [4, 9], [4, 10],
       [5, 10], [5, 11],
-      [2, 7], [2, 8],
+      [2, 6], [2, 7],
     ]
 
     const resizeCanvas = () => {
