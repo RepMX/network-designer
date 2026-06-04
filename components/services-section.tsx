@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 const packages = [
   {
     name: "Secure Core",
-    price: "$700",
+    price: "$699",
     originalPrice: "$800",
     priceDetail: "Service Fee",
     hardware: "Optimized for UniFi Dream Router or Cloud Gateway compact architectures.",
@@ -22,7 +22,7 @@ const packages = [
   },
   {
     name: "Smart Home & Business",
-    price: "$1,400",
+    price: "$1,399",
     originalPrice: "$1,600",
     priceDetail: "Service Fee",
     hardware:
@@ -102,14 +102,14 @@ export function ServicesSection() {
               <div className="text-center">
                 <h3 className="text-lg font-semibold text-foreground">{pkg.name}</h3>
                 <div className="mt-4 flex items-baseline justify-center gap-2">
-                  <span className="text-4xl font-bold tracking-tight text-foreground">
-                    {pkg.price}
-                  </span>
                   {pkg.originalPrice && (
                     <span className="text-lg font-normal text-muted-foreground/70 line-through decoration-muted-foreground/50 select-none">
                       {pkg.originalPrice}
                     </span>
                   )}
+                  <span className="text-4xl font-bold tracking-tight text-foreground">
+                    {pkg.price}
+                  </span>
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">{pkg.priceDetail}</p>
               </div>
