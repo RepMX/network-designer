@@ -145,15 +145,15 @@ export function ServicesSection() {
         <div className="mt-16 border-t border-border/40 pt-8 max-w-5xl mx-auto">
           <div className="grid gap-6 md:grid-cols-2 text-left">
             <div className="flex gap-3">
-              <span className="text-xs font-mono font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
+              <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are engineered as custom-tailored system add-ons.
+                <span className="text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are available as custom-tailored system add-ons.
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="text-xs font-mono font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
+              <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="text-foreground font-medium">Cabling & Labor Infrastructure:</span> All tiers assume structural low-voltage cabling is present on-site. Physical rack mounting, patch panel termination, device patching, and logical system programming are fully covered in the flat service fee.
+                <span className="text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling is present on-site. Physical rack mounting, device patching, and logical system programming are included in the flat fee.
               </p>
             </div>
           </div>
