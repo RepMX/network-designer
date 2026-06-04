@@ -13,7 +13,6 @@ export function Footer() {
           <p className="mt-4 text-lg text-muted-foreground">
             Start with a diagnostic audit to understand your current infrastructure and future requirements.
           </p>
-
           <div className="mt-10">
             <ContactButton />
           </div>
