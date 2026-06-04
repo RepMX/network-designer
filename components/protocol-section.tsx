@@ -85,7 +85,7 @@ export function ProtocolSection() {
                   Flat-Rate Pay-As-You-Go Model
                 </p>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Best for mature, stable environments. If an architectural modification or device integration is requested down the line, simply request service under a predictable, flat-rate hourly model. Zero recurring overhead, zero hidden maintenance retainers.
+                  Best for non-critical environments. If an architectural modification or device integration is desired down the line, we offer a predictable, flat-rate service model. Any additional hardware may be purchased off-the-shelf with zero mark-up. We do the installation and re-configuration. Zero recurring overhead, zero hidden fees.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/30 flex items-center justify-between text-xs font-semibold tracking-wider uppercase text-muted-foreground">
@@ -104,15 +104,15 @@ export function ProtocolSection() {
                   Continuous Coverage
                 </h4>
                 <p className="text-xs font-medium uppercase tracking-wider text-primary mt-0.5">
-                  Subscription Remote Maintenance
+                  Remote Maintenance Subscription
                 </p>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Best for mission-critical remote work loops and large-scale automation architectures. Includes continuous remote core dashboard monitoring, automatic firmware security patch orchestration outside production hours, and emergency priority responses.
+                  Best for mission-critical remote work systems, remotely-managed smart homes, and businesses that rely on internal server hosting. Includes continuous remote core dashboard monitoring, optional firmware security patch orchestration outside production hours, and emergency priority responses. Clear upfront contract, zero hidden fees.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/30 flex items-center justify-between text-xs font-semibold tracking-wider uppercase text-primary">
-                <span>Proactive Monitoring</span>
-                <span>24/7 Availability</span>
+                <span>Proactive Support</span>
+                <span>24/7 Coverage</span>
               </div>
             </div>
 
