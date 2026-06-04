@@ -7,12 +7,35 @@ import { Button } from "@/components/ui/button"
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const handleScroll = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault()
+    setMobileMenuOpen(false) // Automatically collapse mobile drawer on click
+
+    if (targetId === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.history.pushState(null, "", " ")
+      return
+    }
+
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+      window.history.pushState(null, "", `#${targetId}`)
+    } else {
+      window.location.hash = targetId
+    }
+  }
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="text-xl font-semibold tracking-tight text-foreground">
+          {/* Logo / Home Link */}
+          <a 
+            href="#" 
+            onClick={(e) => handleScroll(e, "top")}
+            className="text-xl font-semibold tracking-tight text-foreground cursor-pointer"
+          >
             design<span className="text-primary">.jedy.cc</span>
           </a>
 
@@ -20,38 +43,41 @@ export function Navigation() {
           <div className="hidden md:flex md:items-center md:gap-8">
             <a
               href="#philosophy"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              onClick={(e) => handleScroll(e, "philosophy")}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
               Philosophy
             </a>
             <a
               href="#services"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              onClick={(e) => handleScroll(e, "services")}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
               Services & Pricing
             </a>
             <a
               href="#blueprints"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              onClick={(e) => handleScroll(e, "blueprints")}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
               Reference Blueprints
             </a>
           </div>
 
-          {/* CTA Button */}
+          {/* Desktop CTA Button */}
           <div className="hidden md:block">
             <Button
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+              onClick={(e) => handleScroll(e, "contact")}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 cursor-pointer"
             >
-              <a href="#contact">Contact</a>
+              Contact
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground cursor-pointer"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -64,32 +90,30 @@ export function Navigation() {
             <div className="flex flex-col gap-4">
               <a
                 href="#philosophy"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleScroll(e, "philosophy")}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 Philosophy
               </a>
               <a
                 href="#services"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleScroll(e, "services")}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 Services & Pricing
               </a>
               <a
                 href="#blueprints"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleScroll(e, "blueprints")}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 Reference Blueprints
               </a>
               <Button
-                asChild
-                className="w-fit bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+                onClick={(e) => handleScroll(e, "contact")}
+                className="w-fit bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 cursor-pointer"
               >
-                <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                  Contact
-                </a>
+                Contact
               </Button>
             </div>
           </div>
