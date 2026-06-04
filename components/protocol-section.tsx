@@ -14,11 +14,11 @@ export function ProtocolSection() {
             </div>
 
             <p className="mt-6 text-xl font-semibold text-foreground lg:text-2xl text-balance">
-              Every deployment includes a dedicated 30-day structural tuning and remote optimization period.
+              Every deployment includes a dedicated 30-day systems tuning and remote optimization period.
             </p>
 
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              This ensures absolute system stability before final handover. We don&apos;t just configure and disappear—we verify performance under real-world conditions.
+              This is not just a 30-day warranty. We ensures absolute system stability before final handover. We don&apos;t just configure and disappear—we verify performance under real-world conditions.
             </p>
 
             <div className="mt-8 border-t border-border/50 pt-8">
