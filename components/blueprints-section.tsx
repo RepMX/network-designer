@@ -82,7 +82,7 @@ export function BlueprintsSection() {
               <button
                 key={project.id}
                 onClick={() => setActiveProject(project.id)}
-                className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all ${
+                className={`cursor-pointer flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all ${
                   activeProject === project.id
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
