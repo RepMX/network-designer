@@ -34,12 +34,11 @@ export function NetworkTopology() {
       { x: 0.28, y: 0.22, label: "Switch A", type: "switch" },
       { x: 0.72, y: 0.22, label: "UniFi Protect", type: "protect" },
       { x: 0.12, y: 0.38, label: "Trusted VLAN", type: "vlan" },
-      { x: 0.28, y: 0.38, label: "Secure VLAN", type: "vlan" },
-      { x: 0.44, y: 0.38, label: "AP-1", type: "ap" },
-      { x: 0.60, y: 0.38, label: "AP-2", type: "ap" },
+      { x: 0.28, y: 0.38, label: "AP-1", type: "ap" },
+      { x: 0.44, y: 0.38, label: "AP-2", type: "ap" },
       { x: 0.12, y: 0.54, label: "NAS", type: "storage" },
-      { x: 0.35, y: 0.54, label: "Main WiFi", type: "wifi" },
-      { x: 0.52, y: 0.54, label: "Guest WiFi", type: "wifi" },
+      { x: 0.20, y: 0.54, label: "Main WiFi", type: "wifi" },
+      { x: 0.36, y: 0.54, label: "Guest WiFi", type: "wifi" },
       { x: 0.68, y: 0.54, label: "IoT Devices", type: "iot" },
       { x: 0.65, y: 0.38, label: "PoE Cameras", type: "camera" },
       { x: 0.82, y: 0.38, label: "Local NVR", type: "storage" },
@@ -50,7 +49,6 @@ export function NetworkTopology() {
       [0, 1],   // Gateway --- Switch A
       [0, 2],   // Gateway --- UniFi Protect
       [1, 3],   // Switch A --- Trusted VLAN
-      [1, 4],   // Switch A --- Secure VLAN
       [1, 5],   // Switch A --- AP-1
       [1, 6],   // Switch A --- AP-2
       [3, 7],   // Trusted VLAN --- NAS
@@ -111,8 +109,8 @@ export function NetworkTopology() {
           strokeColor = "#fb923c"
         } else if (node.type === "switch") {
           radius = 16
-          fillColor = "#3b82f6"
-          strokeColor = "#60a5fa"
+          fillColor = "#f63b3b"
+          strokeColor = "#fa6060"
         } else if (node.type === "protect") {
           radius = 16
           fillColor = "#8b5cf6"
