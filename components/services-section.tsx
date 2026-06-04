@@ -27,9 +27,9 @@ const packages = [
       "Engineered for UniFi Cloud Gateway Max controllers, supporting up to 1 managed distribution switch and up to 2 high-throughput Access Points.",
     scope: [
       "Deep structural network equipment planning with power budget calculation",
-      "Comprehensive physical space RF coverage analysis and signal path auditing",
+      "Physical space RF coverage analysis and signal path auditing",
       "Full architecture and remote deployment of up to 8 core isolated VLANs",
-      "UniFi Protect AI security camera deployment & localized NVR storage setup",
+      "UniFi Protect AI security camera & localized NVR storage integration",
       "Infrastructure ready for AI smart home automation via Home Assistant*",
       "Optimized for prosumer and small business storefronts",
     ],
@@ -45,7 +45,7 @@ const packages = [
       "High-density equipment rack elevation layout & power budget mapping",
       "Structural floor-plan network deployment blueprint & AP heatmaps*",
       "Advanced firewall rule matrix, inter-VLAN routing, and traffic shaping",
-      "UniFi Protect multi-disk NVR storage array integration & camera mapping",
+      "UniFi Protect AI security camera & multi-disk NVR storage array integration",
       "High-availability: Dual-WAN failover, UPS backup, and DANTE audio support",
       "Designed for luxury smart estates, media production, and large organizations",
     ],
@@ -146,7 +146,7 @@ export function ServicesSection() {
         {/* Asterisk Disclaimer Note */}
         <div className="mt-12 text-center">
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
-            * Home Assistant server deployment and installation is available but not included. Deployment assumes structural low-voltage cabling is present. Hardware mounting, termination, device patching, and logical system configuration are fully included.
+            * Home Assistant server deployment and installation is available but not included. Deployment assumes structural low-voltage cabling is present. Hardware mounting, termination, device patching, and system configuration are fully included.
           </p>
         </div>
       </div>
