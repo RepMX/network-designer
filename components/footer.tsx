@@ -1,5 +1,6 @@
 import { Mail, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ContactButton } from "@/components/contact-button"
 
 export function Footer() {
   return (
@@ -14,16 +15,7 @@ export function Footer() {
           </p>
 
           <div className="mt-10">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
-            >
-              <a href="mailto:design@jedy.cc">
-                design@jedy.cc
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </Button>
+            <ContactButton />
           </div>
         </div>
 

@@ -49,15 +49,15 @@ export function NetworkTopology() {
       [0, 1],   // Gateway --- Switch A
       [0, 2],   // Gateway --- UniFi Protect
       [1, 3],   // Switch A --- Trusted VLAN
-      [1, 5],   // Switch A --- AP-1
-      [1, 6],   // Switch A --- AP-2
-      [3, 7],   // Trusted VLAN --- NAS
-      [5, 8],   // AP-1 --- Main WiFi
-      [5, 9],   // AP-1 --- Guest WiFi
-      [6, 9],   // AP-2 --- Guest WiFi
-      [6, 10],  // AP-2 --- IoT Devices
-      [2, 11],  // UniFi Protect --- PoE Cameras
-      [2, 12],  // UniFi Protect --- Local NVR Storage
+      [1, 4],   // Switch A --- AP-1
+      [1, 5],   // Switch A --- AP-2
+      [3, 6],   // Trusted VLAN --- NAS
+      [4, 7],   // AP-1 --- Main WiFi
+      [4, 8],   // AP-1 --- Guest WiFi
+      [5, 8],   // AP-2 --- Guest WiFi
+      [5, 9],  // AP-2 --- IoT Devices
+      [2, 10],  // UniFi Protect --- PoE Cameras
+      [2, 11],  // UniFi Protect --- Local NVR Storage
     ]
 
     const animate = () => {
