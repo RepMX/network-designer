@@ -19,26 +19,45 @@ export function NetworkTopology() {
     canvas.height = rect.height * dpr
     ctx.scale(dpr, dpr)
 
-    // Node positions (relative to canvas size)
+    // Node positions based on the user's topology:
+    // Gateway --- Switch A
+    // Switch A --- Trusted VLAN, Secure VLAN, AP-1, AP-2
+    // Trusted VLAN --- NAS
+    // AP-2 --- IoT Devices
+    // AP-1 --- Main WiFi, Guest WiFi
+    // AP-2 --- Guest WiFi
+    // Gateway --- UniFi Protect
+    // UniFi Protect --- PoE Cameras, Local NVR Storage
+
     const nodes = [
-      { x: 0.5, y: 0.15, label: "Gateway", type: "router" },
-      { x: 0.25, y: 0.35, label: "Switch A", type: "switch" },
-      { x: 0.75, y: 0.35, label: "Switch B", type: "switch" },
-      { x: 0.1, y: 0.55, label: "IoT VLAN", type: "vlan" },
-      { x: 0.35, y: 0.55, label: "Trusted", type: "vlan" },
-      { x: 0.65, y: 0.55, label: "Guest", type: "vlan" },
-      { x: 0.9, y: 0.55, label: "Secure", type: "vlan" },
-      { x: 0.2, y: 0.75, label: "AP-1", type: "ap" },
-      { x: 0.5, y: 0.75, label: "NVR", type: "nvr" },
-      { x: 0.8, y: 0.75, label: "AP-2", type: "ap" },
+      { x: 0.5, y: 0.08, label: "Gateway", type: "router" },
+      { x: 0.28, y: 0.22, label: "Managed Switch", type: "switch" },
+      { x: 0.72, y: 0.22, label: "UniFi Protect", type: "protect" },
+      { x: 0.12, y: 0.38, label: "Trusted VLAN", type: "vlan" },
+      { x: 0.28, y: 0.38, label: "AP-1", type: "ap" },
+      { x: 0.44, y: 0.38, label: "AP-2", type: "ap" },
+      { x: 0.06, y: 0.54, label: "NAS", type: "storage" },
+      { x: 0.20, y: 0.54, label: "Main WiFi", type: "wifi" },
+      { x: 0.36, y: 0.54, label: "Guest WiFi", type: "wifi" },
+      { x: 0.52, y: 0.54, label: "IoT Devices", type: "iot" },
+      { x: 0.65, y: 0.38, label: "PoE Cameras", type: "camera" },
+      { x: 0.82, y: 0.38, label: "Local NVR", type: "storage" },
     ]
 
-    // Connections
+    // Connections based on user's topology
     const connections = [
-      [0, 1], [0, 2], // Gateway to switches
-      [1, 3], [1, 4], // Switch A to VLANs
-      [2, 5], [2, 6], // Switch B to VLANs
-      [3, 7], [4, 8], [5, 8], [6, 9], // VLANs to endpoints
+      [0, 1],   // Gateway --- Switch A
+      [0, 2],   // Gateway --- UniFi Protect
+      [1, 3],   // Switch A --- Trusted VLAN
+      [1, 4],   // Switch A --- AP-1
+      [1, 5],   // Switch A --- AP-2
+      [3, 6],   // Trusted VLAN --- NAS
+      [4, 7],   // AP-1 --- Main WiFi
+      [4, 8],   // AP-1 --- Guest WiFi
+      [5, 8],   // AP-2 --- Guest WiFi
+      [5, 9],  // AP-2 --- IoT Devices
+      [2, 10],  // UniFi Protect --- PoE Cameras
+      [2, 11],  // UniFi Protect --- Local NVR Storage
     ]
 
     const animate = () => {
@@ -63,16 +82,16 @@ export function NetworkTopology() {
         ctx.stroke()
 
         // Animated pulse along the line
-        const progress = ((time * 0.5 + i * 0.2) % 1)
+        const progress = ((time * 0.4 + i * 0.15) % 1)
         const pulseX = x1 + (x2 - x1) * progress
         const pulseY = y1 + (y2 - y1) * progress
 
-        const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 8)
-        gradient.addColorStop(0, "rgba(59, 130, 246, 0.8)")
+        const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 6)
+        gradient.addColorStop(0, "rgba(59, 130, 246, 0.7)")
         gradient.addColorStop(1, "rgba(59, 130, 246, 0)")
         ctx.beginPath()
         ctx.fillStyle = gradient
-        ctx.arc(pulseX, pulseY, 8, 0, Math.PI * 2)
+        ctx.arc(pulseX, pulseY, 6, 0, Math.PI * 2)
         ctx.fill()
       })
 
@@ -80,17 +99,52 @@ export function NetworkTopology() {
       nodes.forEach((node) => {
         const x = node.x * rect.width
         const y = node.y * rect.height
-        const radius = node.type === "router" ? 24 : node.type === "switch" ? 20 : 16
+        let radius = 14
+        let fillColor = "#3b82f6"
+        let strokeColor = "#60a5fa"
+
+        if (node.type === "router") {
+          radius = 20
+          fillColor = "#f97316"
+          strokeColor = "#fb923c"
+        } else if (node.type === "switch") {
+          radius = 16
+          fillColor = "#f63b3b"
+          strokeColor = "#fa6060"
+        } else if (node.type === "protect") {
+          radius = 16
+          fillColor = "#8b5cf6"
+          strokeColor = "#a78bfa"
+        } else if (node.type === "vlan") {
+          radius = 14
+          fillColor = "#10b981"
+          strokeColor = "#34d399"
+        } else if (node.type === "ap") {
+          radius = 14
+          fillColor = "#06b6d4"
+          strokeColor = "#22d3ee"
+        } else if (node.type === "storage") {
+          radius = 12
+          fillColor = "#bec9d6"
+          strokeColor = "#94a3b8"
+        } else if (node.type === "wifi") {
+          radius = 11
+          fillColor = "#0ea5e9"
+          strokeColor = "#38bdf8"
+        } else if (node.type === "iot") {
+          radius = 11
+          fillColor = "#eab308"
+          strokeColor = "#facc15"
+        } else if (node.type === "camera") {
+          radius = 12
+          fillColor = "#ec4899"
+          strokeColor = "#f472b6"
+        }
 
         // Glow effect
         const glowGradient = ctx.createRadialGradient(x, y, radius * 0.5, x, y, radius * 2)
-        if (node.type === "router") {
-          glowGradient.addColorStop(0, "rgba(249, 115, 22, 0.4)")
-          glowGradient.addColorStop(1, "rgba(249, 115, 22, 0)")
-        } else {
-          glowGradient.addColorStop(0, "rgba(59, 130, 246, 0.3)")
-          glowGradient.addColorStop(1, "rgba(59, 130, 246, 0)")
-        }
+        glowGradient.addColorStop(0, `${fillColor}40`)
+        glowGradient.addColorStop(1, `${fillColor}00`)
         ctx.beginPath()
         ctx.fillStyle = glowGradient
         ctx.arc(x, y, radius * 2, 0, Math.PI * 2)
@@ -98,8 +152,8 @@ export function NetworkTopology() {
 
         // Node circle
         ctx.beginPath()
-        ctx.fillStyle = node.type === "router" ? "#f97316" : "#3b82f6"
-        ctx.strokeStyle = node.type === "router" ? "#fb923c" : "#60a5fa"
+        ctx.fillStyle = fillColor
+        ctx.strokeStyle = strokeColor
         ctx.lineWidth = 2
         ctx.arc(x, y, radius, 0, Math.PI * 2)
         ctx.fill()
@@ -107,15 +161,15 @@ export function NetworkTopology() {
 
         // Inner highlight
         ctx.beginPath()
-        ctx.fillStyle = node.type === "router" ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.2)"
-        ctx.arc(x, y - radius * 0.3, radius * 0.3, 0, Math.PI * 2)
+        ctx.fillStyle = "rgba(255,255,255,0.25)"
+        ctx.arc(x, y - radius * 0.3, radius * 0.25, 0, Math.PI * 2)
         ctx.fill()
 
         // Label
         ctx.fillStyle = "#94a3b8"
-        ctx.font = "11px Inter, sans-serif"
+        ctx.font = "10px 'DM Sans', Verdana, sans-serif"
         ctx.textAlign = "center"
-        ctx.fillText(node.label, x, y + radius + 16)
+        ctx.fillText(node.label, x, y + radius + 14)
       })
 
       requestAnimationFrame(animate)
@@ -135,7 +189,7 @@ export function NetworkTopology() {
   }, [])
 
   return (
-    <div className="relative aspect-square w-full max-w-lg mx-auto">
+    <div className="relative aspect-[4/3] w-full max-w-lg mx-auto">
       {/* Outer glow */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl" />
       

@@ -1,3 +1,5 @@
+"use client"
+
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -27,8 +29,8 @@ const packages = [
       "Comprehensive coverage analysis",
       "Physical enclosure layout design",
       "UniFi Protect security camera & NVR storage system",
-      "Full deployment of 5 core isolated VLANs",
-      "Guest, Trusted, IoT, Secure Transactions, Management",
+      "Full deployment of up to 8 core isolated VLANs",
+      "Ready for intelligent smart home automation via Home Assistant*",
       "Optimized for prosumer and micro-business footprints",
     ],
     popular: true,
@@ -41,17 +43,26 @@ const packages = [
       "Enterprise Dream Machine Routing Consoles, unlimited UniFi Pro Level 3 managed switching infrastructure, and unlimited multi-zone Access Points.",
     scope: [
       "Advanced physical rack elevation layouts",
-      "Structural perimeter maps",
-      "Native UniFi Protect NVR camera & storage array integration",
-      "Complete 5-VLAN logic deployment with custom traffic routing",
-      "Backup battery cutover planning",
-      "Ironclad firewall rules",
+      "Structural network deployment and access point coverage map ",
+      "UniFi Protect NVR camera & storage array integration included",
+      "Unlimited VLAN logic deployment with custom firewall and traffic routing",
+      "Backup UPS battery and native DANTE audio support",
+      "Engineered for production houses and larger enterprises",
     ],
     popular: false,
   },
 ]
 
 export function ServicesSection() {
+  const handleScrollToContact = () => {
+    const element = document.getElementById("contact")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    } else {
+      window.location.hash = "contact"
+    }
+  }
+
   return (
     <section id="services" className="py-24 lg:py-32 bg-muted/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -67,6 +78,7 @@ export function ServicesSection() {
           </p>
         </div>
 
+        {/* Pricing Grid */}
         <div className="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-3">
           {packages.map((pkg) => (
             <div
@@ -116,18 +128,26 @@ export function ServicesSection() {
 
               <div className="mt-8">
                 <Button
-                  asChild
-                  className={`w-full ${
+                  size="lg"
+                  onClick={handleScrollToContact}
+                  className={`w-full cursor-pointer transition-all duration-200 ${
                     pkg.popular
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+                      : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/25"
                   }`}
                 >
-                  <a href="#contact">Get Started</a>
+                  Get Started
                 </Button>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Asterisk Disclaimer Note */}
+        <div className="mt-12 text-center">
+          <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
+            * Home Assistant server deployment and installation is available but not included. Contact us for a quote.
+          </p>
         </div>
       </div>
     </section>

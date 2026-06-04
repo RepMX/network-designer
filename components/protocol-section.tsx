@@ -18,7 +18,7 @@ export function ProtocolSection() {
             </p>
 
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              This ensures absolute system stability before final handover. We don&apos;t just configure and disappear — we verify performance under real-world conditions.
+              This ensures absolute system stability before final handover. We don&apos;t just configure and disappear—we verify performance under real-world conditions.
             </p>
 
             <div className="mt-8 border-t border-border/50 pt-8">

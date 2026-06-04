@@ -4,7 +4,7 @@ import { NetworkTopology } from "@/components/network-topology"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen pt-16 overflow-hidden">
+    <section className="relative pt-16 overflow-hidden">
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-40" />
       
@@ -25,21 +25,21 @@ export function HeroSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
               >
                 <a href="#contact">
                   Request an Audit
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-border text-foreground hover:bg-secondary gap-2"
+                className="border-border text-foreground hover:bg-secondary hover:border-muted-foreground/30 gap-2.5 group"
               >
                 <a href="#blueprints">
-                  <FileText className="h-4 w-4" />
+                  <FileText className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                   View Blueprints
                 </a>
               </Button>
