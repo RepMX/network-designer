@@ -58,7 +58,7 @@ export function HeroSection() {
           </div>
 
           {/* Right content - Network topology visualization */}
-          <div className="relative z-10">
+          <div className="relative z-10 w-full flex items-center justify-center lg:justify-end mt-12 lg:mt-0">
             <NetworkTopology />
           </div>
         </div>

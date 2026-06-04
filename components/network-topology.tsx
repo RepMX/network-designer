@@ -12,198 +12,188 @@ export function NetworkTopology() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas size
     const dpr = window.devicePixelRatio || 1
-    const rect = canvas.getBoundingClientRect()
-    canvas.width = rect.width * dpr
-    canvas.height = rect.height * dpr
-    ctx.scale(dpr, dpr)
 
-    // Node positions based on the user's topology:
-    // Gateway --- Switch A
-    // Switch A --- Trusted VLAN, Secure VLAN, AP-1, AP-2
-    // Trusted VLAN --- NAS
-    // AP-2 --- IoT Devices
-    // AP-1 --- Main WiFi, Guest WiFi
-    // AP-2 --- Guest WiFi
-    // Gateway --- UniFi Protect
-    // UniFi Protect --- PoE Cameras, Local NVR Storage
-
+    // Perfectly balanced architectural distribution layers
+    // Layer 0: Gateway (Top Center)
+    // Layer 1: Core Controllers (Switch, Protect)
+    // Layer 2: Distribution/Access Layers (VLAN, Access Points, Cameras, Storage)
+    // Layer 3: Physical Endpoints (Devices, Clients, NAS)
     const nodes = [
-      { x: 0.5, y: 0.08, label: "Gateway", type: "router" },
-      { x: 0.28, y: 0.22, label: "Managed Switch", type: "switch" },
-      { x: 0.72, y: 0.22, label: "UniFi Protect", type: "protect" },
-      { x: 0.12, y: 0.38, label: "Trusted VLAN", type: "vlan" },
-      { x: 0.28, y: 0.38, label: "AP-1", type: "ap" },
-      { x: 0.44, y: 0.38, label: "AP-2", type: "ap" },
-      { x: 0.06, y: 0.54, label: "NAS", type: "storage" },
-      { x: 0.20, y: 0.54, label: "Main WiFi", type: "wifi" },
-      { x: 0.36, y: 0.54, label: "Guest WiFi", type: "wifi" },
-      { x: 0.52, y: 0.54, label: "IoT Devices", type: "iot" },
-      { x: 0.65, y: 0.38, label: "PoE Cameras", type: "camera" },
-      { x: 0.82, y: 0.38, label: "Local NVR", type: "storage" },
+      { x: 0.50, y: 0.16, label: "Gateway", type: "router" },
+      { x: 0.32, y: 0.34, label: "Managed Switch", type: "switch" },
+      { x: 0.68, y: 0.34, label: "UniFi Protect", type: "protect" },
+      { x: 0.14, y: 0.52, label: "Trusted VLAN", type: "vlan" },
+      { x: 0.32, y: 0.52, label: "AP-1", type: "ap" },
+      { x: 0.50, y: 0.52, label: "AP-2", type: "ap" },
+      { x: 0.08, y: 0.70, label: "NAS", type: "storage" },
+      { x: 0.22, y: 0.70, label: "Main WiFi", type: "wifi" },
+      { x: 0.36, y: 0.70, label: "Guest WiFi", type: "wifi" },
+      { x: 0.50, y: 0.70, label: "IoT Devices", type: "iot" },
+      { x: 0.68, y: 0.52, label: "PoE Cameras", type: "camera" },
+      { x: 0.84, y: 0.52, label: "Local NVR", type: "storage" },
     ]
 
-    // Connections based on user's topology
     const connections = [
-      [0, 1],   // Gateway --- Switch A
-      [0, 2],   // Gateway --- UniFi Protect
-      [1, 3],   // Switch A --- Trusted VLAN
-      [1, 4],   // Switch A --- AP-1
-      [1, 5],   // Switch A --- AP-2
-      [3, 6],   // Trusted VLAN --- NAS
-      [4, 7],   // AP-1 --- Main WiFi
-      [4, 8],   // AP-1 --- Guest WiFi
-      [5, 8],   // AP-2 --- Guest WiFi
-      [5, 9],  // AP-2 --- IoT Devices
-      [2, 10],  // UniFi Protect --- PoE Cameras
-      [2, 11],  // UniFi Protect --- Local NVR Storage
+      [0, 1], [0, 2], // Gateway Backbone Links
+      [1, 3], [1, 4], [1, 5], // Switch Distribution Plane
+      [3, 6], // Core Wired Storage
+      [4, 7], [4, 8], // AP-1 Wireless Sectors
+      [5, 8], [5, 9], // AP-2 Wireless Sectors
+      [2, 10], [2, 11], // Surveillance Matrix Core Links
     ]
+
+    const resizeCanvas = () => {
+      const rect = canvas.getBoundingClientRect()
+      canvas.width = rect.width * dpr
+      canvas.height = rect.height * dpr
+      ctx.resetTransform() // Reset previous frames scaling profiles
+      ctx.scale(dpr, dpr)
+    }
+
+    resizeCanvas()
+
+    let animationFrameId: number
 
     const animate = () => {
-      ctx.clearRect(0, 0, rect.width, rect.height)
+      // Pull dynamic container parameters right from the hardware boundary on every frame
+      const currentWidth = canvas.width / dpr
+      const currentHeight = canvas.height / dpr
 
-      // Draw connections
+      ctx.clearRect(0, 0, currentWidth, currentHeight)
+
+      // Dynamic scaling factor to compress components seamlessly on mobile screens
+      const scaleFactor = Math.max(0.75, Math.min(1, currentWidth / 480))
       const time = Date.now() / 1000
+
+      // 1. Draw Connection Trunks
       connections.forEach(([from, to], i) => {
         const fromNode = nodes[from]
         const toNode = nodes[to]
-        const x1 = fromNode.x * rect.width
-        const y1 = fromNode.y * rect.height
-        const x2 = toNode.x * rect.width
-        const y2 = toNode.y * rect.height
+        const x1 = fromNode.x * currentWidth
+        const y1 = fromNode.y * currentHeight
+        const x2 = toNode.x * currentWidth
+        const y2 = toNode.y * currentHeight
 
-        // Draw line
         ctx.beginPath()
-        ctx.strokeStyle = "rgba(59, 130, 246, 0.3)"
-        ctx.lineWidth = 1.5
+        ctx.strokeStyle = "rgba(59, 130, 246, 0.25)"
+        ctx.lineWidth = 1.5 * scaleFactor
         ctx.moveTo(x1, y1)
         ctx.lineTo(x2, y2)
         ctx.stroke()
 
-        // Animated pulse along the line
-        const progress = ((time * 0.4 + i * 0.15) % 1)
+        // Active telemetry packet pulses along the bus
+        const progress = (time * 0.35 + i * 0.12) % 1
         const pulseX = x1 + (x2 - x1) * progress
         const pulseY = y1 + (y2 - y1) * progress
 
-        const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 6)
-        gradient.addColorStop(0, "rgba(59, 130, 246, 0.7)")
-        gradient.addColorStop(1, "rgba(59, 130, 246, 0)")
+        const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 6 * scaleFactor)
+        gradient.addColorStop(0, "rgba(96, 165, 250, 0.8)")
+        gradient.addColorStop(1, "rgba(96, 165, 250, 0)")
         ctx.beginPath()
         ctx.fillStyle = gradient
-        ctx.arc(pulseX, pulseY, 6, 0, Math.PI * 2)
+        ctx.arc(pulseX, pulseY, 6 * scaleFactor, 0, Math.PI * 2)
         ctx.fill()
       })
 
-      // Draw nodes
+      // 2. Draw Node Matrices
       nodes.forEach((node) => {
-        const x = node.x * rect.width
-        const y = node.y * rect.height
-        let radius = 14
+        const x = node.x * currentWidth
+        const y = node.y * currentHeight
+        
+        let baseRadius = 14
         let fillColor = "#3b82f6"
         let strokeColor = "#60a5fa"
 
-        if (node.type === "router") {
-          radius = 20
-          fillColor = "#f97316"
-          strokeColor = "#fb923c"
-        } else if (node.type === "switch") {
-          radius = 16
-          fillColor = "#f63b3b"
-          strokeColor = "#fa6060"
-        } else if (node.type === "protect") {
-          radius = 16
-          fillColor = "#8b5cf6"
-          strokeColor = "#a78bfa"
-        } else if (node.type === "vlan") {
-          radius = 14
-          fillColor = "#10b981"
-          strokeColor = "#34d399"
-        } else if (node.type === "ap") {
-          radius = 14
-          fillColor = "#06b6d4"
-          strokeColor = "#22d3ee"
-        } else if (node.type === "storage") {
-          radius = 12
-          fillColor = "#bec9d6"
-          strokeColor = "#94a3b8"
-        } else if (node.type === "wifi") {
-          radius = 11
-          fillColor = "#0ea5e9"
-          strokeColor = "#38bdf8"
-        } else if (node.type === "iot") {
-          radius = 11
-          fillColor = "#eab308"
-          strokeColor = "#facc15"
-        } else if (node.type === "camera") {
-          radius = 12
-          fillColor = "#ec4899"
-          strokeColor = "#f472b6"
+        switch (node.type) {
+          case "router":
+            baseRadius = 18; fillColor = "#f97316"; strokeColor = "#fb923c"
+            break
+          case "switch":
+            baseRadius = 15; fillColor = "#ef4444"; strokeColor = "#f87171"
+            break
+          case "protect":
+            baseRadius = 15; fillColor = "#8b5cf6"; strokeColor = "#a78bfa"
+            break
+          case "vlan":
+            baseRadius = 13; fillColor = "#10b981"; strokeColor = "#34d399"
+            break
+          case "ap":
+            baseRadius = 13; fillColor = "#06b6d4"; strokeColor = "#22d3ee"
+            break
+          case "storage":
+            baseRadius = 11; fillColor = "#94a3b8"; strokeColor = "#cbd5e1"
+            break
+          case "wifi":
+            baseRadius = 11; fillColor = "#0ea5e9"; strokeColor = "#38bdf8"
+            break
+          case "iot":
+            baseRadius = 11; fillColor = "#eab308"; strokeColor = "#facc15"
+            break
+          case "camera":
+            baseRadius = 11; fillColor = "#ec4899"; strokeColor = "#f472b6"
+            break
         }
 
-        // Glow effect
-        const glowGradient = ctx.createRadialGradient(x, y, radius * 0.5, x, y, radius * 2)
-        glowGradient.addColorStop(0, `${fillColor}40`)
+        const radius = baseRadius * scaleFactor
+
+        // Deep localized glow array
+        const glowGradient = ctx.createRadialGradient(x, y, radius * 0.4, x, y, radius * 2.2)
+        glowGradient.addColorStop(0, `${fillColor}3d`)
         glowGradient.addColorStop(1, `${fillColor}00`)
         ctx.beginPath()
         ctx.fillStyle = glowGradient
-        ctx.arc(x, y, radius * 2, 0, Math.PI * 2)
+        ctx.arc(x, y, radius * 2.2, 0, Math.PI * 2)
         ctx.fill()
 
-        // Node circle
+        // Solid hardware core housing
         ctx.beginPath()
         ctx.fillStyle = fillColor
         ctx.strokeStyle = strokeColor
-        ctx.lineWidth = 2
+        ctx.lineWidth = 2 * scaleFactor
         ctx.arc(x, y, radius, 0, Math.PI * 2)
         ctx.fill()
         ctx.stroke()
 
-        // Inner highlight
+        // Volumetric glare pathing
         ctx.beginPath()
-        ctx.fillStyle = "rgba(255,255,255,0.25)"
+        ctx.fillStyle = "rgba(255,255,255,0.2)"
         ctx.arc(x, y - radius * 0.3, radius * 0.25, 0, Math.PI * 2)
         ctx.fill()
 
-        // Label
+        // Responsive text labels
         ctx.fillStyle = "#94a3b8"
-        ctx.font = "10px 'DM Sans', Verdana, sans-serif"
+        ctx.font = `${Math.floor(10 * scaleFactor)}px 'DM Sans', system-ui, sans-serif`
         ctx.textAlign = "center"
-        ctx.fillText(node.label, x, y + radius + 14)
+        ctx.fillText(node.label, x, y + radius + (13 * scaleFactor))
       })
 
-      requestAnimationFrame(animate)
+      animationFrameId = requestAnimationFrame(animate)
     }
 
     animate()
 
-    const handleResize = () => {
-      const newRect = canvas.getBoundingClientRect()
-      canvas.width = newRect.width * dpr
-      canvas.height = newRect.height * dpr
-      ctx.scale(dpr, dpr)
+    window.addEventListener("resize", resizeCanvas)
+    return () => {
+      window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(animationFrameId)
     }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   return (
-    <div className="relative aspect-[4/3] w-full max-w-lg mx-auto">
-      {/* Outer glow */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-3xl" />
+    <div className="relative aspect-[4/3] w-full max-w-[520px] mx-auto">
+      {/* Structural layout glow backplate */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-transparent to-accent/10 blur-2xl pointer-events-none" />
       
-      {/* Container */}
-      <div className="relative h-full rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-4">
-        <canvas
-          ref={canvasRef}
-          className="w-full h-full"
-          style={{ width: "100%", height: "100%" }}
-        />
+      {/* Physical Housing Shield */}
+      <div className="relative h-full w-full rounded-2xl border border-border/40 bg-card/40 backdrop-blur-[4px] p-4 flex flex-col justify-between">
+        <div className="flex-1 w-full min-h-0 relative">
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
+        </div>
         
-        {/* Label */}
-        <div className="absolute bottom-4 left-4 right-4 text-center">
-          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+        {/* Isolated Section Label Anchor */}
+        <div className="w-full text-center pt-2 border-t border-border/10">
+          <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground/80 uppercase tracking-[0.15em] select-none">
             Logical Network Topology
           </span>
         </div>
