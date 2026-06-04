@@ -14,7 +14,7 @@ export function ProtocolSection() {
             </div>
 
             <p className="mt-6 text-xl font-semibold text-foreground lg:text-2xl text-balance">
-              Every deployment includes a dedicated 30-day systems tuning and remote optimization period.
+              Every deployment includes a dedicated 30-day bespoke systems tuning and remote optimization period.
             </p>
 
             <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -31,7 +31,7 @@ export function ProtocolSection() {
                     Post-Warranty Support Options
                   </p>
                   <p className="mt-2 text-muted-foreground leading-relaxed">
-                    Post-warranty diagnostic support is completely predictable: choose between flat-rate pay-as-you-go service alignment or proactive remote maintenance agreements.
+                    Post-warranty diagnostic support is completely predictable: choose between flat-rate pay-as-you-go service model or subscription-based 24/7 remote maintenance service model.
                   </p>
                 </div>
               </div>
