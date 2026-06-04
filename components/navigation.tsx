@@ -13,7 +13,7 @@ export function Navigation() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <a href="#" className="text-xl font-semibold tracking-tight text-foreground">
-            JEDY<span className="text-primary">.CC</span>
+            DESIGN<span className="text-primary">.JEDY.CC</span>
           </a>
 
           {/* Desktop Navigation */}
