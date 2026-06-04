@@ -14,26 +14,26 @@ export function NetworkTopology() {
 
     const dpr = window.devicePixelRatio || 1
 
-    // Mathematically re-centered layout matrix (Bounding Box Center = 0.50)
+    // Optimized vertical step distribution (Interval expanded from 0.18 to 0.25)
     const nodes = [
-      { x: 0.52, y: 0.16, label: "Gateway", type: "router" },
+      { x: 0.52, y: 0.12, label: "Gateway", type: "router" },
       
-      // Core Distribution Systems (Balanced around center)
-      { x: 0.28, y: 0.34, label: "Managed Switch", type: "switch" },
-      { x: 0.76, y: 0.34, label: "UniFi Protect", type: "protect" },
+      // Core Distribution Systems (Stretched and balanced)
+      { x: 0.28, y: 0.37, label: "Managed Switch", type: "switch" },
+      { x: 0.76, y: 0.37, label: "UniFi Protect", type: "protect" },
       
       // Access Tiers
-      { x: 0.14, y: 0.52, label: "Trusted VLAN", type: "vlan" },
-      { x: 0.28, y: 0.52, label: "AP-1", type: "ap" },
-      { x: 0.42, y: 0.52, label: "AP-2", type: "ap" },
-      { x: 0.62, y: 0.52, label: "PoE Cameras", type: "camera" },
-      { x: 0.90, y: 0.52, label: "Local NVR", type: "storage" },
+      { x: 0.14, y: 0.62, label: "Trusted VLAN", type: "vlan" },
+      { x: 0.28, y: 0.62, label: "AP-1", type: "ap" },
+      { x: 0.42, y: 0.62, label: "AP-2", type: "ap" },
+      { x: 0.62, y: 0.62, label: "PoE Cameras", type: "camera" },
+      { x: 0.90, y: 0.62, label: "Local NVR", type: "storage" },
       
       // Terminal Endpoints
-      { x: 0.10, y: 0.70, label: "NAS", type: "storage" },
-      { x: 0.22, y: 0.70, label: "Main WiFi", type: "wifi" },
-      { x: 0.34, y: 0.70, label: "Guest WiFi", type: "wifi" },
-      { x: 0.50, y: 0.70, label: "IoT Devices", type: "iot" },
+      { x: 0.10, y: 0.87, label: "NAS", type: "storage" },
+      { x: 0.22, y: 0.87, label: "Main WiFi", type: "wifi" },
+      { x: 0.34, y: 0.87, label: "Guest WiFi", type: "wifi" },
+      { x: 0.50, y: 0.87, label: "IoT Devices", type: "iot" },
     ]
 
     const connections = [
@@ -49,7 +49,6 @@ export function NetworkTopology() {
       const container = canvas.parentElement
       if (!container) return
       
-      // Read directly from parent layout box instead of the raw canvas boundary
       const width = container.clientWidth
       const height = container.clientHeight
       
