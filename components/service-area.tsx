@@ -72,7 +72,7 @@ export function ServiceArea() {
             </div>
           </div>
 
-          {/* Right Column: High-Contrast Zoomed Out Macro Blueprint Map */}
+          {/* Right Column: Centered Macro Blueprint Map Viewport */}
           <div className="relative aspect-square w-full max-w-xl mx-auto rounded-xl border border-border/50 bg-[#070a12] overflow-hidden shadow-2xl shadow-primary/5">
             <div className="absolute inset-0 w-full h-full">
               
@@ -82,7 +82,7 @@ export function ServiceArea() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Blueprint Grid Gridlines */}
+                {/* Blueprint Grid Lines */}
                 <defs>
                   <pattern id="static-grid" width="20" height="20" patternUnits="userSpaceOnUse">
                     <path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" strokeOpacity="0.03" strokeWidth="0.5" />
@@ -96,58 +96,60 @@ export function ServiceArea() {
 
                 {/* Regional Ocean Shape (Zoomed out further West to fit Thousand Oaks/Ventura lines) */}
                 <path 
-                  d="M 0,110 L 25,110 Q 55,145 70,175 Q 110,230 145,245 Q 160,270 175,270 Q 190,275 205,290 T 275,355 T 340,400 L 0,400 Z" 
+                  d="M 0,150 Q 60,170 125,215 Q 160,255 185,265 Q 240,300 285,350 T 340,400 L 0,400 Z" 
                   className="fill-background/60 stroke-border/60"
                   strokeWidth="1.5"
                 />
 
                 {/* Main Transportation Infrastructure Matrix */}
                 {/* US-101 / I-5 Axis (Thousand Oaks -> SF Valley -> DTLA -> Anaheim -> Irvine) */}
-                <path d="M 15,105 Q 75,125 110,145 Q 155,185 175,205 Q 235,255 265,280 T 340,375" className="stroke-muted-foreground/35" strokeWidth="1.25" />
+                <path d="M 0,110 Q 60,125 110,140 Q 160,165 190,195 Q 245,250 285,300 T 370,400" className="stroke-muted-foreground/35" strokeWidth="1.25" />
                 
                 {/* I-10 Corridor (Santa Monica -> DTLA -> Inland Empire Corridor) */}
-                <path d="M 110,220 L 175,205 L 295,205 L 400,205" className="stroke-muted-foreground/35" strokeWidth="1.25" />
+                <path d="M 125,215 L 190,195 L 300,195 L 400,195" className="stroke-muted-foreground/35" strokeWidth="1.25" />
                 
                 {/* I-405 Coastal Pipeline */}
-                <path d="M 112,148 Q 120,210 140,242 Q 180,268 210,290 T 290,350" className="stroke-primary/40" strokeWidth="1" strokeDasharray="2 2" />
+                <path d="M 110,140 Q 120,210 145,245 Q 185,265 245,250 T 285,300" className="stroke-primary/40" strokeWidth="1" strokeDasharray="2 2" />
 
                 {/* SR-91 Cross-Basin Connector (South Bay -> Anaheim -> Corona) */}
-                <path d="M 148,252 Q 205,260 238,260 L 325,260" className="stroke-muted-foreground/25" strokeWidth="1" />
+                <path d="M 155,255 L 245,250 Q 295,245 330,240" className="stroke-muted-foreground/25" strokeWidth="1" />
 
                 {/* I-210 Foothills Pipeline (Pasadena -> Rancho Cucamonga) */}
-                <path d="M 135,125 L 200,125 L 305,125 L 400,125" className="stroke-muted-foreground/25" strokeWidth="1" />
+                <path d="M 110,140 L 195,140 L 305,140 L 400,140" className="stroke-muted-foreground/25" strokeWidth="1" />
+
+                {/* STATIC CONCENTRIC BROADCAST FIELDS (Centered exactly on the DTLA infrastructure hub) */}
+                <circle cx="190" cy="195" r="155" className="stroke-primary/25 fill-primary/[0.01] animate-pulse" strokeWidth="1" />
+                <circle cx="190" cy="195" r="105" className="stroke-primary/10 fill-transparent" strokeWidth="1" />
+                <circle cx="190" cy="195" r="55" className="stroke-foreground/[0.03] fill-transparent" strokeWidth="1" />
+
+                {/* Blueprint Sector Technical Indicators */}
+                <g className="font-sans text-[8px] fill-muted-foreground/30 font-semibold tracking-widest uppercase">
+                  <text x="135" y="165">LA CORE</text>
+                  <text x="240" y="280">OC SOUTH</text>
+                  <text x="260" y="175">IE GATE</text>
+                </g>
 
                 {/* Regional City Node Placement Markers */}
                 <g className="font-sans text-[9px] fill-muted-foreground font-medium tracking-wider uppercase">
-                  <text x="12" y="95" className="fill-foreground/80 font-semibold">Thousand Oaks</text>
-                  <text x="45" y="190" className="fill-muted-foreground/50">Malibu</text>
-                  <text x="80" y="242">Santa Monica</text>
-                  <text x="150" y="115">Pasadena</text>
-                  <text x="182" y="200" className="fill-foreground font-semibold">DTLA</text>
-                  <text x="165" y="300" className="fill-foreground font-semibold">Long Beach</text>
-                  <text x="225" y="252">Anaheim</text>
-                  <text x="275" y="315" className="fill-foreground/90">Irvine</text>
-                  <text x="220" y="340" className="fill-muted-foreground/50">Newport</text>
-                  <text x="295" y="200">Ontario</text>
-                  <text x="270" y="115" className="fill-muted-foreground/50">Rancho Cucamonga</text>
-                  <text x="320" y="275">Corona</text>
+                  <text x="20" y="125" className="fill-foreground/90 font-semibold">Thousand Oaks</text>
+                  <text x="85" y="70" className="fill-muted-foreground/40">Santa Clarita</text>
+                  <text x="45" y="190" className="fill-muted-foreground/40">Malibu</text>
+                  <text x="75" y="222">Santa Monica</text>
+                  <text x="195" y="140">Pasadena</text>
+                  <text x="195" y="202" className="fill-foreground font-bold">DTLA</text>
+                  <text x="140" y="282" className="fill-foreground font-semibold">Long Beach</text>
+                  <text x="245" y="242">Anaheim</text>
+                  <text x="295" y="305" className="fill-foreground/90">Irvine</text>
+                  <text x="235" y="345" className="fill-muted-foreground/50">Newport</text>
+                  <text x="300" y="190">Ontario</text>
+                  <text x="265" y="115" className="fill-muted-foreground/50">Rancho Cucamonga</text>
+                  <text x="310" y="250">Corona</text>
                 </g>
+
+                {/* Core Unified Infrastructure Node */}
+                <circle cx="190" cy="195" r="7" className="fill-primary/20 animate-ping" />
+                <circle cx="190" cy="195" r="3.5" className="fill-primary" filter="drop-shadow(0 0 6px #3b82f6)" />
               </svg>
-
-              {/* STATIC REGIONAL COVERAGE BEACON */}
-              {/* Perfectly centered to cleanly project the radial lines without crossing bounding box edges */}
-              <div className="absolute top-[50%] left-[52%] transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                {/* Fixed Macro Coverage Fields */}
-                <div className="absolute rounded-full border border-primary/25 bg-primary/[0.015] animate-pulse h-[350px] w-[350px]" />
-                <div className="absolute rounded-full border border-primary/10 bg-transparent h-[230px] w-[230px]" />
-                <div className="absolute rounded-full border border-foreground/[0.03] bg-transparent h-[120px] w-[120px]" />
-
-                {/* Core Network Beacon Light */}
-                <div className="relative flex h-3.5 w-3.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary shadow-[0_0_14px_rgba(59,130,246,0.8)]"></span>
-                </div>
-              </div>
 
             </div>
             
@@ -155,7 +157,7 @@ export function ServiceArea() {
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-lg border border-border/50 bg-background/90 backdrop-blur-md px-4 py-2.5 text-xs text-foreground font-medium shadow-md pointer-events-none select-none z-20 font-sans">
               <span className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Active Operations Matrix
+                Macro Scope: Full Operational Footprint
               </span>
               <span className="text-muted-foreground">HQ: Los Angeles, CA</span>
             </div>
