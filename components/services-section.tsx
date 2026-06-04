@@ -133,7 +133,7 @@ export function ServicesSection() {
                   className={`w-full cursor-pointer transition-all duration-200 ${
                     pkg.popular
                       ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md"
+                      : "bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/25"
                   }`}
                 >
                   Get Started
@@ -146,7 +146,7 @@ export function ServicesSection() {
         {/* Asterisk Disclaimer Note */}
         <div className="mt-12 text-center">
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
-            *Home Assistant server deployment and installation is available but not included. Contact us for a quote.
+            * Home Assistant server deployment and installation is available but not included. Contact us for a quote.
           </p>
         </div>
       </div>
