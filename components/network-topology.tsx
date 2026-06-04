@@ -14,81 +14,94 @@ export function NetworkTopology() {
 
     const dpr = window.devicePixelRatio || 1
 
-    // Perfectly balanced architectural distribution layers
-    // Layer 0: Gateway (Top Center)
-    // Layer 1: Core Controllers (Switch, Protect)
-    // Layer 2: Distribution/Access Layers (VLAN, Access Points, Cameras, Storage)
-    // Layer 3: Physical Endpoints (Devices, Clients, NAS)
+    // Mathematically re-centered layout matrix (Bounding Box Center = 0.50)
     const nodes = [
-      { x: 0.50, y: 0.16, label: "Gateway", type: "router" },
-      { x: 0.32, y: 0.34, label: "Managed Switch", type: "switch" },
-      { x: 0.68, y: 0.34, label: "UniFi Protect", type: "protect" },
+      { x: 0.52, y: 0.16, label: "Gateway", type: "router" },
+      
+      // Core Distribution Systems (Balanced around center)
+      { x: 0.28, y: 0.34, label: "Managed Switch", type: "switch" },
+      { x: 0.76, y: 0.34, label: "UniFi Protect", type: "protect" },
+      
+      // Access Tiers
       { x: 0.14, y: 0.52, label: "Trusted VLAN", type: "vlan" },
-      { x: 0.32, y: 0.52, label: "AP-1", type: "ap" },
-      { x: 0.50, y: 0.52, label: "AP-2", type: "ap" },
-      { x: 0.08, y: 0.70, label: "NAS", type: "storage" },
+      { x: 0.28, y: 0.52, label: "AP-1", type: "ap" },
+      { x: 0.42, y: 0.52, label: "AP-2", type: "ap" },
+      { x: 0.62, y: 0.52, label: "PoE Cameras", type: "camera" },
+      { x: 0.90, y: 0.52, label: "Local NVR", type: "storage" },
+      
+      // Terminal Endpoints
+      { x: 0.10, y: 0.70, label: "NAS", type: "storage" },
       { x: 0.22, y: 0.70, label: "Main WiFi", type: "wifi" },
-      { x: 0.36, y: 0.70, label: "Guest WiFi", type: "wifi" },
+      { x: 0.34, y: 0.70, label: "Guest WiFi", type: "wifi" },
       { x: 0.50, y: 0.70, label: "IoT Devices", type: "iot" },
-      { x: 0.68, y: 0.52, label: "PoE Cameras", type: "camera" },
-      { x: 0.84, y: 0.52, label: "Local NVR", type: "storage" },
     ]
 
     const connections = [
-      [0, 1], [0, 2], // Gateway Backbone Links
-      [1, 3], [1, 4], [1, 5], // Switch Distribution Plane
-      [3, 6], // Core Wired Storage
-      [4, 7], [4, 8], // AP-1 Wireless Sectors
-      [5, 8], [5, 9], // AP-2 Wireless Sectors
-      [2, 10], [2, 11], // Surveillance Matrix Core Links
+      [0, 1], [0, 2],
+      [1, 3], [1, 4], [1, 5],
+      [3, 6],
+      [4, 9], [4, 10],
+      [5, 10], [5, 11],
+      [2, 7], [2, 8],
     ]
 
     const resizeCanvas = () => {
-      const rect = canvas.getBoundingClientRect()
-      canvas.width = rect.width * dpr
-      canvas.height = rect.height * dpr
-      ctx.resetTransform() // Reset previous frames scaling profiles
+      const container = canvas.parentElement
+      if (!container) return
+      
+      // Read directly from parent layout box instead of the raw canvas boundary
+      const width = container.clientWidth
+      const height = container.clientHeight
+      
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      ctx.resetTransform()
       ctx.scale(dpr, dpr)
     }
 
+    window.addEventListener("resize", resizeCanvas)
     resizeCanvas()
 
     let animationFrameId: number
 
     const animate = () => {
-      // Pull dynamic container parameters right from the hardware boundary on every frame
+      if (!canvas.width || !canvas.height) {
+        animationFrameId = requestAnimationFrame(animate)
+        return
+      }
+
       const currentWidth = canvas.width / dpr
       const currentHeight = canvas.height / dpr
 
       ctx.clearRect(0, 0, currentWidth, currentHeight)
 
-      // Dynamic scaling factor to compress components seamlessly on mobile screens
-      const scaleFactor = Math.max(0.75, Math.min(1, currentWidth / 480))
+      const scaleFactor = Math.max(0.78, Math.min(1, currentWidth / 480))
       const time = Date.now() / 1000
 
-      // 1. Draw Connection Trunks
+      // 1. Telemetry Trunk Lines
       connections.forEach(([from, to], i) => {
         const fromNode = nodes[from]
         const toNode = nodes[to]
+        if (!fromNode || !toNode) return
+
         const x1 = fromNode.x * currentWidth
         const y1 = fromNode.y * currentHeight
         const x2 = toNode.x * currentWidth
         const y2 = toNode.y * currentHeight
 
         ctx.beginPath()
-        ctx.strokeStyle = "rgba(59, 130, 246, 0.25)"
+        ctx.strokeStyle = "rgba(59, 130, 246, 0.2)"
         ctx.lineWidth = 1.5 * scaleFactor
         ctx.moveTo(x1, y1)
         ctx.lineTo(x2, y2)
         ctx.stroke()
 
-        // Active telemetry packet pulses along the bus
-        const progress = (time * 0.35 + i * 0.12) % 1
+        const progress = (time * 0.3 + i * 0.12) % 1
         const pulseX = x1 + (x2 - x1) * progress
         const pulseY = y1 + (y2 - y1) * progress
 
         const gradient = ctx.createRadialGradient(pulseX, pulseY, 0, pulseX, pulseY, 6 * scaleFactor)
-        gradient.addColorStop(0, "rgba(96, 165, 250, 0.8)")
+        gradient.addColorStop(0, "rgba(96, 165, 250, 0.75)")
         gradient.addColorStop(1, "rgba(96, 165, 250, 0)")
         ctx.beginPath()
         ctx.fillStyle = gradient
@@ -96,7 +109,7 @@ export function NetworkTopology() {
         ctx.fill()
       })
 
-      // 2. Draw Node Matrices
+      // 2. Compute Nodes Hardware Matrix
       nodes.forEach((node) => {
         const x = node.x * currentWidth
         const y = node.y * currentHeight
@@ -137,16 +150,14 @@ export function NetworkTopology() {
 
         const radius = baseRadius * scaleFactor
 
-        // Deep localized glow array
         const glowGradient = ctx.createRadialGradient(x, y, radius * 0.4, x, y, radius * 2.2)
-        glowGradient.addColorStop(0, `${fillColor}3d`)
+        glowGradient.addColorStop(0, `${fillColor}3b`)
         glowGradient.addColorStop(1, `${fillColor}00`)
         ctx.beginPath()
         ctx.fillStyle = glowGradient
         ctx.arc(x, y, radius * 2.2, 0, Math.PI * 2)
         ctx.fill()
 
-        // Solid hardware core housing
         ctx.beginPath()
         ctx.fillStyle = fillColor
         ctx.strokeStyle = strokeColor
@@ -155,15 +166,13 @@ export function NetworkTopology() {
         ctx.fill()
         ctx.stroke()
 
-        // Volumetric glare pathing
         ctx.beginPath()
         ctx.fillStyle = "rgba(255,255,255,0.2)"
         ctx.arc(x, y - radius * 0.3, radius * 0.25, 0, Math.PI * 2)
         ctx.fill()
 
-        // Responsive text labels
         ctx.fillStyle = "#94a3b8"
-        ctx.font = `${Math.floor(10 * scaleFactor)}px 'DM Sans', system-ui, sans-serif`
+        ctx.font = `${Math.floor(10 * scaleFactor)}px system-ui, -apple-system, sans-serif`
         ctx.textAlign = "center"
         ctx.fillText(node.label, x, y + radius + (13 * scaleFactor))
       })
@@ -173,7 +182,6 @@ export function NetworkTopology() {
 
     animate()
 
-    window.addEventListener("resize", resizeCanvas)
     return () => {
       window.removeEventListener("resize", resizeCanvas)
       cancelAnimationFrame(animationFrameId)
@@ -182,18 +190,13 @@ export function NetworkTopology() {
 
   return (
     <div className="relative aspect-[4/3] w-full max-w-[520px] mx-auto">
-      {/* Structural layout glow backplate */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-transparent to-accent/10 blur-2xl pointer-events-none" />
-      
-      {/* Physical Housing Shield */}
       <div className="relative h-full w-full rounded-2xl border border-border/40 bg-card/40 backdrop-blur-[4px] p-4 flex flex-col justify-between">
         <div className="flex-1 w-full min-h-0 relative">
           <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
         </div>
-        
-        {/* Isolated Section Label Anchor */}
-        <div className="w-full text-center pt-2 border-t border-border/10">
-          <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground/80 uppercase tracking-[0.15em] select-none">
+        <div className="w-full text-center pt-2 border-t border-border/5">
+          <span className="text-[10px] font-semibold text-muted-foreground/70 uppercase tracking-[0.2em] select-none">
             Logical Network Topology
           </span>
         </div>
