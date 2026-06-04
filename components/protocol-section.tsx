@@ -31,7 +31,7 @@ export function ProtocolSection() {
                     Post-Warranty Support Options
                   </p>
                   <p className="mt-2 text-muted-foreground leading-relaxed">
-                    Post-warranty diagnostic support is completely predictable: choose between flat-rate pay-as-you-go service model or subscription-based 24/7 remote maintenance service model.
+                    Post-warranty diagnostic support is completely predictable: choose between flat-rate pay-as-you-go service model or subscription-based 24/7 coverage remote maintenance service model.
                   </p>
                 </div>
               </div>
