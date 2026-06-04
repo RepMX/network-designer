@@ -14,13 +14,13 @@ export function NetworkTopology() {
 
     const dpr = window.devicePixelRatio || 1
 
-    // Optimized vertical step distribution (Interval expanded from 0.18 to 0.25)
+    // Added safe headroom for Gateway (y: 0.15) to prevent canvas top clipping
     const nodes = [
-      { x: 0.52, y: 0.12, label: "Gateway", type: "router" },
+      { x: 0.52, y: 0.15, label: "Gateway", type: "router" },
       
-      // Core Distribution Systems (Stretched and balanced)
-      { x: 0.28, y: 0.37, label: "Managed Switch", type: "switch" },
-      { x: 0.76, y: 0.37, label: "UniFi Protect", type: "protect" },
+      // Core Distribution Systems
+      { x: 0.28, y: 0.38, label: "Managed Switch", type: "switch" },
+      { x: 0.76, y: 0.38, label: "UniFi Protect", type: "protect" },
       
       // Access Tiers
       { x: 0.14, y: 0.62, label: "Trusted VLAN", type: "vlan" },
@@ -30,10 +30,10 @@ export function NetworkTopology() {
       { x: 0.90, y: 0.62, label: "Local NVR", type: "storage" },
       
       // Terminal Endpoints
-      { x: 0.10, y: 0.87, label: "NAS", type: "storage" },
-      { x: 0.22, y: 0.87, label: "Main WiFi", type: "wifi" },
-      { x: 0.34, y: 0.87, label: "Guest WiFi", type: "wifi" },
-      { x: 0.50, y: 0.87, label: "IoT Devices", type: "iot" },
+      { x: 0.10, y: 0.86, label: "NAS", type: "storage" },
+      { x: 0.22, y: 0.86, label: "Main WiFi", type: "wifi" },
+      { x: 0.34, y: 0.86, label: "Guest WiFi", type: "wifi" },
+      { x: 0.50, y: 0.86, label: "IoT Devices", type: "iot" },
     ]
 
     const connections = [
@@ -74,7 +74,8 @@ export function NetworkTopology() {
 
       ctx.clearRect(0, 0, currentWidth, currentHeight)
 
-      const scaleFactor = Math.max(0.78, Math.min(1, currentWidth / 480))
+      // CHANGED: Lowered scale minimum from 0.78 to 0.58 so nodes scale down elegantly on mobile
+      const scaleFactor = Math.max(0.58, Math.min(1, currentWidth / 480))
       const time = Date.now() / 1000
 
       // 1. Telemetry Trunk Lines
