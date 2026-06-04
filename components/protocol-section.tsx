@@ -19,7 +19,9 @@ export function ProtocolSection() {
             A structured operational framework ensuring immediate system stability and predictable long-term maintenance.
           </p>
         </div>
-
+        
+        {/* Subtle glow on hover */}
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <div className="mx-auto max-w-5xl space-y-12">
           
           {/* Highlighted Phase 1: 30-Day Tuning */}
