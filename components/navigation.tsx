@@ -84,10 +84,17 @@ export function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-border/50 py-4">
-            <div className="flex flex-col gap-4">
+        {/* Mobile Navigation Dropdown Container */}
+        <div 
+          className={`md:hidden grid transition-all duration-300 ease-in-out ${
+            mobileMenuOpen 
+              ? "grid-rows-[1fr] opacity-100" 
+              : "grid-rows-[0fr] opacity-0 pointer-events-none"
+          }`}
+        >
+          {/* The overflow-hidden wrapper is required for the grid row height interpolation */}
+          <div className="overflow-hidden">
+            <div className="border-t border-border/50 py-4 flex flex-col gap-4">
               <a
                 href="#philosophy"
                 onClick={(e) => handleScroll(e, "philosophy")}
@@ -117,7 +124,7 @@ export function Navigation() {
               </Button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )
