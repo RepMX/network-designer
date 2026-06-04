@@ -1,8 +1,20 @@
+"use client"
+
 import { ArrowRight, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { NetworkTopology } from "@/components/network-topology"
 
 export function HeroSection() {
+  const handleScroll = (targetId: string) => {
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+      window.history.pushState(null, "", `#${targetId}`)
+    } else {
+      window.location.hash = targetId
+    }
+  }
+
   return (
     <section className="relative pt-16 overflow-hidden">
       {/* Subtle grid background */}
@@ -22,25 +34,22 @@ export function HeroSection() {
             
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Button
-                asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
+                onClick={() => handleScroll("contact")}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group whitespace-nowrap cursor-pointer"
               >
-                <a href="#contact">
-                  Request an Audit
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </a>
+                Request an Audit
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
               </Button>
+              
               <Button
-                asChild
                 size="lg"
                 variant="outline"
-                className="border-border text-foreground hover:bg-secondary hover:border-muted-foreground/30 gap-2.5 group"
+                onClick={() => handleScroll("blueprints")}
+                className="border-border text-foreground hover:bg-secondary hover:border-muted-foreground/30 gap-2.5 group whitespace-nowrap cursor-pointer"
               >
-                <a href="#blueprints">
-                  <FileText className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
-                  View Blueprints
-                </a>
+                <FileText className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:scale-110" />
+                View Blueprints
               </Button>
             </div>
           </div>
