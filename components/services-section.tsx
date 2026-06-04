@@ -71,7 +71,7 @@ export function ServicesSection() {
             Services & Pricing
           </h2>
           <p className="mt-2 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl text-balance">
-            Service Packages
+            Deployment Packages
           </p>
           <p className="mt-4 text-lg text-muted-foreground">
             Transparent, flat-rate service fees. You own your hardware outright.
@@ -146,7 +146,7 @@ export function ServicesSection() {
         {/* Asterisk Disclaimer Note */}
         <div className="mt-12 text-center">
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
-            * Home Assistant server deployment, container configuration, and individual device integration are available as a custom tailored add-on.<br>† All deployment tiers assume structural low-voltage cabling is already present on-site. Physical hardware mounting, patch panel termination, device patching, and logical system programming are fully included in the flat fee.
+            &ast; Home Assistant server deployment, container configuration, and individual device integration are available as a custom tailored add-on.<br>&dagger; All deployment tiers assume structural low-voltage cabling is already present on-site. Physical hardware mounting, patch panel termination, device patching, and logical system programming are fully included in the flat fee.
           </p>
         </div>
       </div>
