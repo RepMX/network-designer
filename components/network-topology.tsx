@@ -36,10 +36,10 @@ export function NetworkTopology() {
       { x: 0.12, y: 0.38, label: "Trusted VLAN", type: "vlan" },
       { x: 0.28, y: 0.38, label: "AP-1", type: "ap" },
       { x: 0.44, y: 0.38, label: "AP-2", type: "ap" },
-      { x: 0.12, y: 0.54, label: "NAS", type: "storage" },
+      { x: 0.06, y: 0.54, label: "NAS", type: "storage" },
       { x: 0.20, y: 0.54, label: "Main WiFi", type: "wifi" },
       { x: 0.36, y: 0.54, label: "Guest WiFi", type: "wifi" },
-      { x: 0.68, y: 0.54, label: "IoT Devices", type: "iot" },
+      { x: 0.52, y: 0.54, label: "IoT Devices", type: "iot" },
       { x: 0.65, y: 0.38, label: "PoE Cameras", type: "camera" },
       { x: 0.82, y: 0.38, label: "Local NVR", type: "storage" },
     ]
