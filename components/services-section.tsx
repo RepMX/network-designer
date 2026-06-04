@@ -97,7 +97,7 @@ export function ServicesSection() {
                 </div>
               )}
 
-              <div className="pointer-events-none text-center">
+              <div className="text-center">
                 <h3 className="text-lg font-semibold text-foreground">{pkg.name}</h3>
                 <div className="mt-4 flex items-baseline justify-center gap-1">
                   <span className="text-4xl font-bold tracking-tight text-foreground">
@@ -107,14 +107,14 @@ export function ServicesSection() {
                 <p className="mt-1 text-sm text-muted-foreground">{pkg.priceDetail}</p>
               </div>
 
-              <div className="pointer-events-none mt-6 border-t border-border/50 pt-6">
+              <div className="mt-6 border-t border-border/50 pt-6">
                 <p className="text-sm font-medium text-foreground">Hardware Stack</p>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                   {pkg.hardware}
                 </p>
               </div>
 
-              <div className="pointer-events-none mt-6 flex-1">
+              <div className="mt-6 flex-1">
                 <p className="text-sm font-medium text-foreground">Scope</p>
                 <ul className="mt-4 space-y-3">
                   {pkg.scope.map((item) => (
@@ -142,18 +142,18 @@ export function ServicesSection() {
             </div>
           ))}
         </div>
-        <div className="pointer-events-none mt-16 border-t border-border/40 pt-8 max-w-5xl mx-auto">
+        <div className="mt-16 border-t border-border/40 pt-8 max-w-5xl mx-auto">
           <div className="grid gap-6 md:grid-cols-2 text-left">
             <div className="flex gap-3">
-              <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
+              <span className="pointer-events-none text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are available as custom-tailored system add-ons.
+                <span className="pointer-events-none text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are available as custom-tailored system add-ons.
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
+              <span className="pointer-events-none text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling is present on-site. Physical rack mounting, device patching, and logical system programming are included in the flat fee.
+                <span className="pointer-events-none text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling is present on-site. Physical rack mounting, device patching, and logical system programming are included in the flat fee.
               </p>
             </div>
           </div>
