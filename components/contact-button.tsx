@@ -22,7 +22,7 @@ export function ContactButton() {
       onClick={handleCopy}
       // Changed width from an oversized min-w to a fixed, compact w-[180px]
       // Reduced horizontal padding to px-3 to keep the container snug around the elements
-      className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group whitespace-nowrap h-11 px-3 w-41 inline-flex items-center justify-end transition-all duration-200"
+      className="cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group whitespace-nowrap h-11 px-3 w-41 inline-flex items-center justify-end transition-all duration-200"
     >
       {copied ? (
         <>
