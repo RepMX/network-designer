@@ -40,7 +40,7 @@ const packages = [
     price: "$2,400",
     priceDetail: "Service Fee",
     hardware:
-      "Enterprise Dream Machine Routing Consoles, up to 4 UniFi Pro Level 3 managed distribution switches, and up to 6 multi-zone Access Points.",
+      "Enterprise Dream Machine Routing Consoles, supporting up to 4 UniFi Pro Level 3 managed distribution switches, and up to 6 multi-zone Access Points.",
     scope: [
       "High-density equipment rack elevation layout & power budget mapping",
       "Structural floor-plan network deployment blueprint & AP heatmaps",
