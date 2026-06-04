@@ -53,14 +53,21 @@ export function Navigation() {
               onClick={(e) => handleScroll(e, "services")}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              Services & Pricing
+              Pricing
             </a>
             <a
               href="#blueprints"
               onClick={(e) => handleScroll(e, "blueprints")}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
             >
-              Reference Blueprints
+              Blueprints
+            </a>
+            <a
+              href="#protocol"
+              onClick={(e) => handleScroll(e, "protocol")}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+            >
+              Support
             </a>
           </div>
 
