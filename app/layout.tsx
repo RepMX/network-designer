@@ -8,25 +8,28 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'JEDY | Enterprise Network Architecture & Smart Home Systems',
-  description: 'Independent blueprint design, security hardening, and local-first automation. Zero hardware markup. Zero monthly subscription fees.',
-  generator: 'v0.app',
+  title: 'JEDY | Enterprise Network & Smart Home Systems Architecture',
+  description: 'Modern network blueprint design, internet security hardening, and local-first surveillance and automation. Zero hardware markup. Zero monthly subscription fees.',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: 'https://jedy.cc/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        url: 'https://jedy.cc/favicon.png',
+        type: 'image/png',
+      },
+      {
+        url: 'https://jedy.cc/favicon.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: 'https://jedy.cc/favicon.png',
         media: '(prefers-color-scheme: dark)',
       },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
     ],
-    apple: '/apple-icon.png',
+    apple: 'https://jedy.cc/favicon.png',
   },
 }
 

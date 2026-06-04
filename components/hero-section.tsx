@@ -17,8 +17,7 @@ export function HeroSection() {
               <span className="text-primary">Engineered for Premium Spaces.</span>
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground lg:text-xl">
-              Independent blueprint design, security hardening, and local-first automation. 
-              Zero hardware markup. Zero monthly subscription fees.
+              Modern network blueprint design, internet security hardening, and local-first surveillance and automation. Zero hardware markup. Zero monthly subscription fees.
             </p>
             
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
