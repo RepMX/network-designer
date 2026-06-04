@@ -70,7 +70,7 @@ export function Navigation() {
               onClick={(e) => handleScroll(e, "contact")}
               className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 cursor-pointer"
             >
-              Contact
+              Request a Quote
             </Button>
           </div>
 
