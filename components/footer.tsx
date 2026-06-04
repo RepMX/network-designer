@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl text-balance">
-            Ready to Engineer Your Network?
+            Ready to Optimize Your Network?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Start with a diagnostic audit to understand your current infrastructure and future requirements.
