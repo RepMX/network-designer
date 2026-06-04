@@ -142,8 +142,6 @@ export function ServicesSection() {
             </div>
           ))}
         </div>
-
-        {/* Asterisk Disclaimer Note */}
         <div className="mt-12 text-center">
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
             &ast; Home Assistant server deployment, container configuration, and individual device integration are available as a custom tailored add-on.<br>
