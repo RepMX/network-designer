@@ -10,7 +10,7 @@ const projects = [
     subtitle: "2,500 sq. ft. Multi-Story Smart Residential Grid",
     icon: Home,
     description:
-      "A comprehensive deployment showcasing how structural dead zones were eliminated using strategically placed localized PoE access points. The architecture demonstrates seamless handoff between floors while maintaining strict network segmentation.",
+      "A perfect deployment to showcase how structural dead zones were eliminated using strategically placed WiFI 7 PoE access points. This architecture demonstrates seamless handoff between floors while maintaining strict VLAN segmentation.",
     highlights: [
       {
         icon: Wifi,
