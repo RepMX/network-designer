@@ -34,7 +34,7 @@ export function NetworkTopology() {
       { x: 0.28, y: 0.22, label: "Switch A", type: "switch" },
       { x: 0.72, y: 0.22, label: "UniFi Protect", type: "protect" },
       { x: 0.12, y: 0.38, label: "Trusted VLAN", type: "vlan" },
-      //{ x: 0.28, y: 0.38, label: "Secure VLAN", type: "vlan" },
+      { x: 0.28, y: 0.38, label: "Secure VLAN", type: "vlan" },
       { x: 0.44, y: 0.38, label: "AP-1", type: "ap" },
       { x: 0.60, y: 0.38, label: "AP-2", type: "ap" },
       { x: 0.12, y: 0.54, label: "NAS", type: "storage" },
@@ -50,7 +50,7 @@ export function NetworkTopology() {
       [0, 1],   // Gateway --- Switch A
       [0, 2],   // Gateway --- UniFi Protect
       [1, 3],   // Switch A --- Trusted VLAN
-      //[1, 4],   // Switch A --- Secure VLAN
+      [1, 4],   // Switch A --- Secure VLAN
       [1, 5],   // Switch A --- AP-1
       [1, 6],   // Switch A --- AP-2
       [3, 7],   // Trusted VLAN --- NAS
