@@ -8,14 +8,14 @@ const packages = [
     name: "Secure Core",
     price: "$600",
     priceDetail: "Service Fee",
-    hardware: "Optimized for UniFi Dream Router architectures.",
+    hardware: "Optimized for UniFi Dream Router or Cloud Gateway compact architectures.",
     scope: [
-      "Complete configuration of 5 isolated logical VLAN networks",
-      "Guest Wi-Fi network",
-      "Trusted Internal Data network",
-      "Isolated IoT/Smart Devices network",
-      "Secure Transaction/POS lines",
-      "Encrypted Management Plane",
+      "Local-oriented core network management configuration",
+      "Physical space environmental assessment and localized equipment placement planning",
+      "Full deployment of up to 5 core isolated logical VLAN networks",
+      "Perimeter gateway security hardening with active Threat Management (IDS/IPS)",
+      "Secure WireGuard / VPN tunnel and smart home ready",
+      "Sized perfectly for modern apartments, condominiums, and micro-businesses",
     ],
     popular: false,
   },
@@ -26,12 +26,12 @@ const packages = [
     hardware:
       "Engineered for UniFi Cloud Gateway Max controllers, supporting up to 1 managed distribution switch and up to 2 high-throughput Access Points.",
     scope: [
-      "Comprehensive coverage analysis",
-      "Physical enclosure layout design",
-      "Full deployment of up to 8 core isolated VLANs",
-      "UniFi Protect AI security system & integrated NVR storage",
-      "Ready for intelligent smart home automation via Home Assistant*",
-      "Optimized for prosumer and micro-business footprints",
+      "Deep structural network equipment planning with power budget calculation",
+      "Comprehensive physical space RF coverage analysis and signal path auditing",
+      "Full architecture and remote deployment of up to 8 core isolated VLANs",
+      "UniFi Protect AI security camera deployment & localized NVR storage setup",
+      "Infrastructure ready for AI smart home automation via Home Assistant*",
+      "Optimized for prosumer and small business storefronts",
     ],
     popular: true,
   },
@@ -40,14 +40,14 @@ const packages = [
     price: "$2,400",
     priceDetail: "Service Fee",
     hardware:
-      "Enterprise Dream Machine Routing Consoles, unlimited UniFi Pro Level 3 managed-switching infrastructure, and unlimited multi-zone Access Points.",
+      "Enterprise Dream Machine Routing Consoles, up to 4 UniFi Pro Level 3 managed distribution switches, and up to 6 multi-zone Access Points.",
     scope: [
-      "Advanced physical rack elevation layouts",
-      "Structural network deployment and access point coverage map ",
-      "Unlimited VLAN logic deployment with custom firewall and traffic routing",
-      "UniFi Protect camera mapping & NVR storage array integration included",
-      "Redundancy with dual power supply & UPS battery and DANTE audio support",
-      "Designed for luxury smart homes, production houses, and large enterprises",
+      "High-density equipment rack elevation layout & power budget mapping",
+      "Structural floor-plan network deployment blueprint & AP heatmaps*",
+      "Advanced firewall rule matrix, inter-VLAN routing, and traffic shaping",
+      "UniFi Protect multi-disk NVR storage array integration & camera mapping",
+      "High-availability: Dual-WAN failover, UPS backup, and DANTE audio support",
+      "Designed for luxury smart estates, media production, and large organizations",
     ],
     popular: false,
   },
@@ -146,7 +146,7 @@ export function ServicesSection() {
         {/* Asterisk Disclaimer Note */}
         <div className="mt-12 text-center">
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
-            * Home Assistant server deployment and installation is available but not included. Contact us for a quote.
+            * Home Assistant server deployment and installation is available but not included. Deployment assumes structural low-voltage cabling is present. Hardware mounting, termination, device patching, and logical system configuration are fully included.
           </p>
         </div>
       </div>
