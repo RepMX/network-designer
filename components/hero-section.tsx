@@ -28,7 +28,7 @@ export function HeroSection() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
               >
                 <a href="#contact">
-                  Request a Diagnostic Audit
+                  Request an Audit
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
               </Button>
@@ -40,7 +40,7 @@ export function HeroSection() {
               >
                 <a href="#blueprints">
                   <FileText className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
-                  View Reference Blueprints
+                  View Blueprints
                 </a>
               </Button>
             </div>
