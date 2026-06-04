@@ -4,7 +4,7 @@ import { Clock, Sliders, Wrench, ShieldCheck, ArrowRight } from "lucide-react"
 
 export function ProtocolSection() {
   return (
-    <section id="protocol" className="py-24 lg:py-32 bg-muted/30 scroll-mt-16">
+    <section id="protocol" className="select-none py-24 lg:py-32 bg-muted/30 scroll-mt-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* Section Header */}

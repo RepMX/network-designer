@@ -4,7 +4,7 @@ import { ContactButton } from "@/components/contact-button"
 
 export function Footer() {
   return (
-    <footer id="contact" className="py-24 lg:py-32">
+    <footer id="contact" className="select-none py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl text-balance">
