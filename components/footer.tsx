@@ -17,7 +17,7 @@ export function Footer() {
             <Button
               asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 px-6 py-3"
             >
               <a href="mailto:design@jedy.cc">
                 <Mail className="h-4 w-4" />

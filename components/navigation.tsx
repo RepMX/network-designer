@@ -42,7 +42,7 @@ export function Navigation() {
           <div className="hidden md:block">
             <Button
               asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5"
             >
               <a href="#contact">Contact</a>
             </Button>
@@ -85,7 +85,7 @@ export function Navigation() {
               </a>
               <Button
                 asChild
-                className="w-fit bg-primary text-primary-foreground hover:bg-primary/90"
+                className="w-fit bg-primary text-primary-foreground hover:bg-primary/90 px-5 py-2.5"
               >
                 <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
                   Contact

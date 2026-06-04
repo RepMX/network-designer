@@ -117,7 +117,7 @@ export function ServicesSection() {
               <div className="mt-8">
                 <Button
                   asChild
-                  className={`w-full ${
+                  className={`w-full px-6 py-3 ${
                     pkg.popular
                       ? "bg-primary text-primary-foreground hover:bg-primary/90"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
