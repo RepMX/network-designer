@@ -47,7 +47,7 @@ const packages = [
       "UniFi Protect NVR camera & storage array integration included",
       "Unlimited VLAN logic deployment with custom firewall and traffic routing",
       "Backup UPS battery and native DANTE audio support",
-      "Designed for production houses and larger enterprises",
+      "Designed for luxury smart homes, production houses, and large enterprises",
     ],
     popular: false,
   },
