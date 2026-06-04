@@ -28,8 +28,8 @@ const packages = [
     scope: [
       "Comprehensive coverage analysis",
       "Physical enclosure layout design",
-      "UniFi Protect security camera & NVR storage system",
       "Full deployment of up to 8 core isolated VLANs",
+      "UniFi Protect AI security system & integrated NVR storage",
       "Ready for intelligent smart home automation via Home Assistant*",
       "Optimized for prosumer and micro-business footprints",
     ],
@@ -40,13 +40,13 @@ const packages = [
     price: "$2,400",
     priceDetail: "Service Fee",
     hardware:
-      "Enterprise Dream Machine Routing Consoles, unlimited UniFi Pro Level 3 managed switching infrastructure, and unlimited multi-zone Access Points.",
+      "Enterprise Dream Machine Routing Consoles, unlimited UniFi Pro Level 3 managed-switching infrastructure, and unlimited multi-zone Access Points.",
     scope: [
       "Advanced physical rack elevation layouts",
       "Structural network deployment and access point coverage map ",
-      "UniFi Protect NVR camera & storage array integration included",
       "Unlimited VLAN logic deployment with custom firewall and traffic routing",
-      "Backup UPS battery and native DANTE audio support",
+      "UniFi Protect camera mapping & NVR storage array integration included",
+      "Redundancy with dual power supply & UPS battery and DANTE audio support",
       "Designed for luxury smart homes, production houses, and large enterprises",
     ],
     popular: false,
