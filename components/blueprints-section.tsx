@@ -58,7 +58,9 @@ const projects = [
 
 export function BlueprintsSection() {
   const [activeProject, setActiveProject] = useState(projects[0].id)
-  const currentProject = projects.find((p) => p.id === activeProject)!
+  
+  // Find the current active index to mathematically offset the flex track
+  const activeIndex = projects.findIndex((p) => p.id === activeProject)
 
   return (
     <section id="blueprints" className="py-24 lg:py-32">
@@ -95,41 +97,52 @@ export function BlueprintsSection() {
           </div>
         </div>
 
-        {/* Project Content */}
-        <div className="mt-12 mx-auto max-w-4xl">
-          <div className="rounded-xl border border-border/50 bg-card/50 p-8 lg:p-12">
-            <div className="flex items-start gap-4">
-              <div className="hidden sm:flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
-                <currentProject.icon className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-accent">{currentProject.title}</p>
-                <h3 className="mt-1 text-xl font-semibold text-foreground lg:text-2xl">
-                  {currentProject.subtitle}
-                </h3>
-              </div>
-            </div>
-
-            <p className="mt-6 text-muted-foreground leading-relaxed">
-              {currentProject.description}
-            </p>
-
-            <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              {currentProject.highlights.map((highlight) => (
-                <div
-                  key={highlight.label}
-                  className="rounded-lg border border-border/30 bg-background/50 p-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <highlight.icon className="h-5 w-5 text-primary" />
-                    <span className="text-sm font-medium text-foreground">
-                      {highlight.label}
-                    </span>
+        {/* Slider Frame */}
+        <div className="mt-12 mx-auto max-w-4xl overflow-hidden rounded-xl border border-border/50 bg-card/50">
+          {/* Animated Horizontal Track */}
+          <div 
+            className="flex transition-transform duration-500 ease-in-out dynamic-slide-track"
+            style={{ transform: `translate3d(-${activeIndex * 100}%, 0, 0)` }}
+          >
+            {projects.map((project) => (
+              <div 
+                key={project.id} 
+                className="w-full shrink-0 p-8 lg:p-12 select-none"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="hidden sm:flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                    <project.icon className="h-6 w-6" />
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">{highlight.detail}</p>
+                  <div>
+                    <p className="text-sm font-medium text-accent">{project.title}</p>
+                    <h3 className="mt-1 text-xl font-semibold text-foreground lg:text-2xl">
+                      {project.subtitle}
+                    </h3>
+                  </div>
                 </div>
-              ))}
-            </div>
+
+                <p className="mt-6 text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="mt-8 grid gap-6 sm:grid-cols-3">
+                  {project.highlights.map((highlight) => (
+                    <div
+                      key={highlight.label}
+                      className="rounded-lg border border-border/30 bg-background/50 p-4"
+                    >
+                      <div className="flex items-center gap-3">
+                        <highlight.icon className="h-5 w-5 text-primary" />
+                        <span className="text-sm font-medium text-foreground">
+                          {highlight.label}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm text-muted-foreground">{highlight.detail}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
