@@ -1,3 +1,5 @@
+"use client"
+
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -52,6 +54,15 @@ const packages = [
 ]
 
 export function ServicesSection() {
+  const handleScrollToContact = () => {
+    const element = document.getElementById("contact")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    } else {
+      window.location.hash = "contact"
+    }
+  }
+
   return (
     <section id="services" className="py-24 lg:py-32 bg-muted/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -67,6 +78,7 @@ export function ServicesSection() {
           </p>
         </div>
 
+        {/* Pricing Grid */}
         <div className="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-3">
           {packages.map((pkg) => (
             <div
@@ -116,19 +128,26 @@ export function ServicesSection() {
 
               <div className="mt-8">
                 <Button
-                  asChild
                   size="lg"
-                  className={`cursor-pointer w-full ${
+                  onClick={handleScrollToContact}
+                  className={`w-full cursor-pointer transition-all duration-200 ${
                     pkg.popular
                       ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md"
                   }`}
                 >
-                  <a href="#contact">Get Started</a>
+                  Get Started
                 </Button>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Asterisk Disclaimer Note */}
+        <div className="mt-12 text-center">
+          <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
+            *Home Assistant server deployment and installation is available but not included. Contact us for a quote.
+          </p>
         </div>
       </div>
     </section>
