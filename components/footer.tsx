@@ -17,7 +17,7 @@ export function Footer() {
             <Button
               asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
+              className="flex items-center bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
             >
               <a href="mailto:design@jedy.cc">
                 design@jedy.cc
