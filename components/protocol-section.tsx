@@ -26,7 +26,7 @@ export function ProtocolSection() {
           <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-gradient-to-br from-card to-primary/5 p-8 lg:p-12 shadow-md">
             {/* Corner Badge */}
             <div className="absolute top-0 right-0 rounded-bl-lg bg-primary px-4 py-1 text-xs font-semibold tracking-wider uppercase text-primary-foreground">
-              Included Natively
+              Included
             </div>
 
             <div className="flex flex-col md:flex-row md:items-center gap-6">
@@ -48,7 +48,7 @@ export function ProtocolSection() {
             <div className="mt-8 grid gap-4 sm:grid-cols-3 border-t border-border/40 pt-6">
               <div className="flex items-center gap-2 text-sm text-foreground/80">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                RF & Channel Optimization
+                RF Channel Optimization
               </div>
               <div className="flex items-center gap-2 text-sm text-foreground/80">
                 <div className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -85,7 +85,7 @@ export function ProtocolSection() {
                   Flat-Rate Pay-As-You-Go Model
                 </p>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Best for non-critical environments. If an architectural modification or device integration is desired down the line, we offer a predictable, flat-rate service model. Any additional hardware may be purchased off-the-shelf with zero mark-up. We do the installation and re-configuration. Zero recurring overhead, zero hidden fees.
+                  Best for stable, self-sufficient deployments. If an architectural modification or device integration is desired down the line, we offer a predictable, flat-rate service model. Any additional hardware may be purchased off-the-shelf with zero mark-up—we handle the installation and re-configuration. Zero recurring overhead, zero hidden fees.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/30 flex items-center justify-between text-xs font-semibold tracking-wider uppercase text-muted-foreground">
@@ -107,7 +107,7 @@ export function ProtocolSection() {
                   Remote Maintenance Subscription
                 </p>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Best for mission-critical remote work systems, remotely-managed smart homes, and businesses that rely on internal server hosting. Includes continuous remote core dashboard monitoring, optional firmware security patch orchestration outside production hours, and emergency priority responses. Clear upfront contract, zero hidden fees.
+                  Best for mission-critical remote work loops, smart homes requiring remote oversight, and environments utilizing self-hosted infrastructure. Includes continuous remote dashboard health monitoring, coordinated off-hours firmware security patching, and high-priority emergency response. Clear upfront terms, zero hidden fees.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/30 flex items-center justify-between text-xs font-semibold tracking-wider uppercase text-primary">
