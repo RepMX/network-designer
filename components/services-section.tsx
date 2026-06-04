@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button"
 const packages = [
   {
     name: "Secure Core",
-    price: "$600",
+    price: "$700",
+    originalPrice: "$800",
     priceDetail: "Service Fee",
     hardware: "Optimized for UniFi Dream Router or Cloud Gateway compact architectures.",
     scope: [
@@ -21,7 +22,8 @@ const packages = [
   },
   {
     name: "Smart Home & Business",
-    price: "$1,200",
+    price: "$1,400",
+    originalPrice: "$1,600",
     priceDetail: "Service Fee",
     hardware:
       "Engineered for UniFi Cloud Gateway Max controllers, supporting up to 1 managed distribution switch and up to 2 high-throughput Access Points.",
@@ -37,7 +39,7 @@ const packages = [
   },
   {
     name: "Advanced Home & Business",
-    price: "$2,400",
+    price: "$4,000",
     priceDetail: "Service Fee",
     hardware:
       "Enterprise Dream Machine Routing Consoles, supporting up to 4 UniFi Pro Level 3 managed distribution switches, and up to 6 multi-zone Access Points.",
@@ -47,7 +49,7 @@ const packages = [
       "Advanced firewall rule matrix, inter-VLAN routing, and traffic shaping",
       "UniFi Protect AI security camera & multi-disk NVR storage array integration",
       "High-availability: Dual-WAN failover, UPS backup, and DANTE audio support",
-      "Designed for luxury smart estates, media production, and large organizations",
+      "Designed for luxury smart estates, media production, and mid-size organizations",
     ],
     popular: false,
   },
@@ -99,7 +101,12 @@ export function ServicesSection() {
 
               <div className="text-center">
                 <h3 className="text-lg font-semibold text-foreground">{pkg.name}</h3>
-                <div className="mt-4 flex items-baseline justify-center gap-1">
+                <div className="mt-4 flex items-baseline justify-center gap-2">
+                  {pkg.originalPrice && (
+                    <span className="text-lg font-normal text-muted-foreground/70 line-through decoration-muted-foreground/50 select-none">
+                      {pkg.originalPrice}
+                    </span>
+                  )}
                   <span className="text-4xl font-bold tracking-tight text-foreground">
                     {pkg.price}
                   </span>
