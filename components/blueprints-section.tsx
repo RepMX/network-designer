@@ -35,7 +35,7 @@ const projects = [
     subtitle: "High-Security Remote-Work & Self-Hosted Infrastructure",
     icon: Building2,
     description:
-      "An advanced deployment highlighting local network protection for sensitive business operations. Features reverse proxy safety boundaries, comprehensive data storage privacy measures, and enterprise-grade firewall configurations.",
+      "An advanced deployment highlighting local network protection for sensitive business operations. Features reverse proxy safety boundaries, comprehensive data storage privacy measures, and dependable enterprise-grade self-hosting infrastructure.",
     highlights: [
       {
         icon: Lock,
