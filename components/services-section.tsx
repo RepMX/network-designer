@@ -160,7 +160,7 @@ export function ServicesSection() {
             <div className="flex gap-3">
               <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling is present on-site. Physical rack mounting, device patching, and logical system programming are included in the flat fee.
+                <span className="text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling are present on-site. Physical rack mounting, device patching, device registration, and logical system programming are included in the flat fee.
               </p>
             </div>
           </div>
