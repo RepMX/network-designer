@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Copy, Check } from "lucide-react" // Swapped ArrowUpRight for Copy
+import { Copy, Check } from "lucide-react"
 
 export function ContactButton() {
   const [copied, setCopied] = useState(false)
@@ -20,14 +20,13 @@ export function ContactButton() {
   return (
     <Button
       onClick={handleCopy}
-      // Removed size="lg" to clear default bloated padding
-      // Explicitly set h-11 for structure, px-5 for clean margins
-      // min-w-[215px] locks the width perfectly so it doesn't layout-shift when text changes
-      className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group whitespace-nowrap h-11 px-5 min-w-[215px] inline-flex items-center justify-center transition-all duration-200"
+      // Changed width from an oversized min-w to a fixed, compact w-[180px]
+      // Reduced horizontal padding to px-3 to keep the container snug around the elements
+      className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group whitespace-nowrap h-11 px-3 w-[180px] inline-flex items-center justify-center transition-all duration-200"
     >
       {copied ? (
         <>
-          Copied to Clipboard!
+          Email Copied!
           <Check className="h-4 w-4 text-emerald-400 animate-in fade-in zoom-in-75 duration-150" />
         </>
       ) : (
