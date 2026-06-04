@@ -118,7 +118,7 @@ export function ServicesSection() {
                 <Button
                   asChild
                   size="lg"
-                  className={`w-full ${
+                  className={`cursor-pointer w-full ${
                     pkg.popular
                       ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md"
