@@ -154,7 +154,7 @@ export function ServicesSection() {
             <div className="flex gap-3">
               <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are available as custom-tailored system add-ons.
+                <span className="text-foreground font-medium">Home Assistant:</span>An open source home automation that puts local control and privacy first. Server provisioning, localized container configuration, and smart device integrations are available as custom-tailored system add-ons.
               </p>
             </div>
             <div className="flex gap-3">
