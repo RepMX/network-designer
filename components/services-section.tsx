@@ -43,7 +43,7 @@ const packages = [
       "Enterprise Dream Machine Routing Consoles, up to 4 UniFi Pro Level 3 managed distribution switches, and up to 6 multi-zone Access Points.",
     scope: [
       "High-density equipment rack elevation layout & power budget mapping",
-      "Structural floor-plan network deployment blueprint & AP heatmaps*",
+      "Structural floor-plan network deployment blueprint & AP heatmaps",
       "Advanced firewall rule matrix, inter-VLAN routing, and traffic shaping",
       "UniFi Protect AI security camera & multi-disk NVR storage array integration",
       "High-availability: Dual-WAN failover, UPS backup, and DANTE audio support",
@@ -146,7 +146,7 @@ export function ServicesSection() {
         {/* Asterisk Disclaimer Note */}
         <div className="mt-12 text-center">
           <p className="text-xs text-muted-foreground max-w-2xl mx-auto leading-relaxed border-t border-border/20 pt-6">
-            * Home Assistant server deployment and installation is available but not included. Deployment assumes structural low-voltage cabling is present. Hardware mounting, termination, device patching, and system configuration are fully included.
+            * Home Assistant server deployment, container configuration, and individual device integration are available as a custom tailored add-on.<br>† All deployment tiers assume structural low-voltage cabling is already present on-site. Physical hardware mounting, patch panel termination, device patching, and logical system programming are fully included in the flat fee.
           </p>
         </div>
       </div>
