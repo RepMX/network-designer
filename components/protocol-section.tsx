@@ -85,7 +85,7 @@ export function ProtocolSection() {
                   Flat-Rate Pay-As-You-Go Model
                 </p>
                 <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  Best for stable, self-sufficient deployments. If an architectural modification or device integration is desired down the line, we offer a predictable, flat-rate service model. Any additional hardware may be purchased off-the-shelf with zero mark-up—we handle the installation and re-configuration. Zero recurring overhead, zero hidden fees.
+                  Best for stable deployments. If an architectural modification or device integration is desired down the line, we offer a predictable, flat-rate service model. Any additional hardware may be purchased off-the-shelf with zero mark-up—we handle the installation and re-configuration. Zero recurring overhead, zero hidden fees.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-border/30 flex items-center justify-between text-xs font-semibold tracking-wider uppercase text-muted-foreground">
