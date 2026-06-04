@@ -117,10 +117,11 @@ export function ServicesSection() {
               <div className="mt-8">
                 <Button
                   asChild
-                  className={`w-full px-6 py-3 ${
+                  size="lg"
+                  className={`w-full ${
                     pkg.popular
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md"
                   }`}
                 >
                   <a href="#contact">Get Started</a>

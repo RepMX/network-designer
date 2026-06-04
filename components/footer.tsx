@@ -17,12 +17,12 @@ export function Footer() {
             <Button
               asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 px-6 py-3"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
             >
               <a href="mailto:design@jedy.cc">
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                 design@jedy.cc
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </Button>
           </div>

@@ -25,21 +25,21 @@ export function HeroSection() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 px-6 py-3"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 gap-2.5 group"
               >
                 <a href="#contact">
                   Request a Diagnostic Audit
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </a>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-border text-foreground hover:bg-secondary gap-2 px-6 py-3"
+                className="border-border text-foreground hover:bg-secondary hover:border-muted-foreground/30 gap-2.5 group"
               >
                 <a href="#blueprints">
-                  <FileText className="h-4 w-4" />
+                  <FileText className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                   View Reference Blueprints
                 </a>
               </Button>
