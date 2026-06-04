@@ -11,7 +11,7 @@ export function Footer() {
             Ready to Optimize Your Network?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Let us audit your current infrastructure and future requirements to design the optimal solution for your home and business.
+            Let us audit your current infrastructure and future requirements to design the optimal solution for your home and business spaces.
           </p>
           <div className="mt-10">
             <ContactButton />
