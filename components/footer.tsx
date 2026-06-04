@@ -1,8 +1,22 @@
+"use client"
+
 import { Mail, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ContactButton } from "@/components/contact-button"
 
 export function Footer() {
+  const handleScroll = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault()
+
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+      window.history.pushState(null, "", `#${targetId}`)
+    } else {
+      window.location.hash = targetId
+    }
+  }
+
   return (
     <footer id="contact" className="select-none py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -27,19 +41,22 @@ export function Footer() {
             <div className="flex items-center gap-6">
               <a
                 href="#philosophy"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                onClick={(e) => handleScroll(e, "philosophy")}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 Philosophy
               </a>
               <a
                 href="#services"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                onClick={(e) => handleScroll(e, "services")}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
-                Services
+                Pricing
               </a>
               <a
                 href="#blueprints"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                onClick={(e) => handleScroll(e, "blueprints")}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
               >
                 Blueprints
               </a>
