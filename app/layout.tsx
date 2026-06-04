@@ -8,7 +8,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'JEDY | Enterprise Network & Smart Home Architecture Design',
+  title: 'JEDY | Network & Smart Home Infrastructure Design',
   description: 'Modern network blueprint design, internet security hardening, and local-first surveillance and automation. Zero hardware markup. Zero monthly subscription fees.',
   icons: {
     icon: [
