@@ -64,9 +64,9 @@ export function ServicesSection() {
   }
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-muted/30">
+    <section id="services" className="select-none py-24 lg:py-32 bg-muted/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="pointer-events-none mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
             Services & Pricing
           </h2>
@@ -90,7 +90,7 @@ export function ServicesSection() {
               }`}
             >
               {pkg.popular && (
-                <div className="pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
                     Most Popular
                   </span>
@@ -145,15 +145,15 @@ export function ServicesSection() {
         <div className="mt-16 border-t border-border/40 pt-8 max-w-5xl mx-auto">
           <div className="grid gap-6 md:grid-cols-2 text-left">
             <div className="flex gap-3">
-              <span className="pointer-events-none text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
+              <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="pointer-events-none text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are available as custom-tailored system add-ons.
+                <span className="text-foreground font-medium">Home Assistant Deployment:</span> Server provisioning, localized container configuration, and individual smart device integrations are available as custom-tailored system add-ons.
               </p>
             </div>
             <div className="flex gap-3">
-              <span className="pointer-events-none text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
+              <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[02]</span>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="pointer-events-none text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling is present on-site. Physical rack mounting, device patching, and logical system programming are included in the flat fee.
+                <span className="text-foreground font-medium">Infrastructure Labor:</span> All tiers assume high-voltage and Ethernet cabling is present on-site. Physical rack mounting, device patching, and logical system programming are included in the flat fee.
               </p>
             </div>
           </div>
