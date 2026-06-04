@@ -66,7 +66,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="py-24 lg:py-32 bg-muted/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="cursor-default mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
             Services & Pricing
           </h2>
@@ -90,14 +90,14 @@ export function ServicesSection() {
               }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <div className="cursor-default absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="text-center">
+              <div className="cursor-default text-center">
                 <h3 className="text-lg font-semibold text-foreground">{pkg.name}</h3>
                 <div className="mt-4 flex items-baseline justify-center gap-1">
                   <span className="text-4xl font-bold tracking-tight text-foreground">
@@ -107,14 +107,14 @@ export function ServicesSection() {
                 <p className="mt-1 text-sm text-muted-foreground">{pkg.priceDetail}</p>
               </div>
 
-              <div className="mt-6 border-t border-border/50 pt-6">
+              <div className="cursor-default mt-6 border-t border-border/50 pt-6">
                 <p className="text-sm font-medium text-foreground">Hardware Stack</p>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                   {pkg.hardware}
                 </p>
               </div>
 
-              <div className="mt-6 flex-1">
+              <div className="cursor-default mt-6 flex-1">
                 <p className="text-sm font-medium text-foreground">Scope</p>
                 <ul className="mt-4 space-y-3">
                   {pkg.scope.map((item) => (
@@ -142,7 +142,7 @@ export function ServicesSection() {
             </div>
           ))}
         </div>
-        <div className="mt-16 border-t border-border/40 pt-8 max-w-5xl mx-auto">
+        <div className="cursor-default mt-16 border-t border-border/40 pt-8 max-w-5xl mx-auto">
           <div className="grid gap-6 md:grid-cols-2 text-left">
             <div className="flex gap-3">
               <span className="text-xs font-bold text-primary tracking-wider mt-0.5 select-none">[01]</span>
