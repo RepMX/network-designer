@@ -31,7 +31,7 @@ export function NetworkTopology() {
 
     const nodes = [
       { x: 0.5, y: 0.08, label: "Gateway", type: "router" },
-      { x: 0.28, y: 0.22, label: "Switch A", type: "switch" },
+      { x: 0.28, y: 0.22, label: "Managed Switch", type: "switch" },
       { x: 0.72, y: 0.22, label: "UniFi Protect", type: "protect" },
       { x: 0.12, y: 0.38, label: "Trusted VLAN", type: "vlan" },
       { x: 0.28, y: 0.38, label: "AP-1", type: "ap" },
