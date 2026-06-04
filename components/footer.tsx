@@ -11,7 +11,7 @@ export function Footer() {
             Ready to Optimize Your Network?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Start with a diagnostic audit to understand your current infrastructure and future requirements.
+            Start with a diagnostic audit to understand your current infrastructure and future requirements. We will offer you the right solution for your needs.
           </p>
           <div className="mt-10">
             <ContactButton />
