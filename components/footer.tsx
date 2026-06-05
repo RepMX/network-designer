@@ -36,7 +36,7 @@ export function Footer() {
         <div className="mt-24 border-t border-border/50 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">jedy</span> — Network & Smart Home Infrastructure Design
+              <span className="font-semibold text-foreground">jedy</span> — Network & Smart Home Design
             </div>
             <div className="flex items-center gap-6">
               <a
