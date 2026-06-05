@@ -222,7 +222,7 @@ export default function ContractPage() {
                   </div>
                 </>
               ) : (
-                <div className="space-y-4 pt-1 w-full max-w-sm">
+                <div className="space-y-4 pt-1 w-[85%]">
                   <div className="border-b border-slate-300 h-5"></div>
                   <div className="border-b border-slate-300 h-5"></div>
                 </div>
@@ -262,7 +262,7 @@ export default function ContractPage() {
                 {formData.clientName ? (
                   formData.clientName
                 ) : (
-                  <div className="w-full max-w-sm border-b border-slate-300 h-6"></div>
+                  <div className="w-[85%] border-b border-slate-300 h-6"></div>
                 )}
               </div>
             </div>
