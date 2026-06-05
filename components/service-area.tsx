@@ -129,7 +129,7 @@ export function ServiceArea() {
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-lg border border-border/50 bg-background/90 backdrop-blur-md px-4 py-2.5 text-xs text-foreground font-medium shadow-md pointer-events-none select-none z-20 font-sans">
               <span className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                Macro Scope: Full Operational Footprint
+                On-site Service Coverage
               </span>
               <span className="text-muted-foreground">HQ: Los Angeles, CA</span>
             </div>
