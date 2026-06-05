@@ -107,7 +107,7 @@ export default function ContractPage() {
         @media print {
           @page {
             margin-bottom: 20mm;
-            @bottom-right {
+            @bottom-center {
               content: "Page " counter(page) " of " counter(pages);
               font-family: ui-sans-serif, system-ui, sans-serif;
               font-size: 10px;
