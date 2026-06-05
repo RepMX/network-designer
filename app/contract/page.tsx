@@ -276,25 +276,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              3. Client Obligations & Access
-            </h2>
-            <p>
-              The Client agrees to provide active, operational Internet Service Provider (ISP) lines to the perimeter gateway position during configuration loops. The Client shall grant the Provider safe physical access to logical utility closets, enclosure frames, and property structures necessary to analyze radio frequency (RF) signal propagation path auditing and place hardware components.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              4. Local-First Data Sovereignty & Credential Transfers
-            </h2>
-            <p>
-              Systems are explicitly engineered to prioritize localized, local-first architectures ensuring privacy and operation completely independent of public cloud states. Upon project closure, all localized master administrator administrative login accounts, encrypted keys, logical gateway topologies, and configuration files will be completely transferred to the Client. The Provider retains zero backdoor access codes, passive remote loops, or data collection routes unless explicit off-site support retainers are established by separate instrument.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              5. Payment Terms & Flat Fees
+              3. Payment Terms & Flat Fees
             </h2>
             <p>
               Services are billed as a strict flat-rate project fee. No hourly extensions or additional fees will be applied without a mutually signed change order. The specified package total for this work order is detailed as:
@@ -362,6 +344,24 @@ export default function ContractPage() {
             
             <p className="text-xs text-slate-500 italic">
               *Terms: A baseline commencement deposit of 50% is due upon execution of this agreement. The remaining 50% balance is due instantly upon logical network handover, delivery of custom network blueprints, and administrative credential transfers.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              4. Client Obligations & Access
+            </h2>
+            <p>
+              The Client agrees to provide active, operational Internet Service Provider (ISP) lines to the perimeter gateway position during configuration loops. The Client shall grant the Provider safe physical access to logical utility closets, enclosure frames, and property structures necessary to analyze radio frequency (RF) signal propagation path auditing and place hardware components.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              5. Local-First Data Sovereignty & Credential Transfers
+            </h2>
+            <p>
+              Systems are explicitly engineered to prioritize localized, local-first architectures ensuring privacy and operation completely independent of public cloud states. Upon project closure, all localized master administrator administrative login accounts, encrypted keys, logical gateway topologies, and configuration files will be completely transferred to the Client. The Provider retains zero backdoor access codes, passive remote loops, or data collection routes unless explicit off-site support retainers are established by separate instrument.
             </p>
           </section>
 
