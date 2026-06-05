@@ -243,7 +243,7 @@ export default function ContractPage() {
               </label>
               <input
                 type="text"
-                placeholder=""
+                placeholder="_______________"
                 value={formData.clientName}
                 onChange={(e) => handleChange("clientName", e.target.value)}
                 onBlur={() => handleBlur("clientName")}
@@ -440,7 +440,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder=""
+                    placeholder="_______________"
                     value={formData.clientRep}
                     onChange={(e) => handleChange("clientRep", e.target.value)}
                     onBlur={() => handleBlur("clientRep")}
@@ -451,7 +451,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder=""
+                    placeholder="_______________"
                     value={formData.clientTitle}
                     onChange={(e) => handleChange("clientTitle", e.target.value)}
                     onBlur={() => handleBlur("clientTitle")}
