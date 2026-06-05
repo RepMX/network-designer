@@ -22,7 +22,10 @@ const regions = [
 
 export function ServiceArea() {
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
-  const iframeUrl = `https://api.mapbox.com/styles/v1/repmx/cmpzn85ag002401rf6euw2xun.html?title=false&access_token=${mapboxToken}&zoomwheel=false#8.29/33.887/-118.135`
+  
+  // Adjusted zoom from 8.29 down to 7.6 for a cleaner wide frame scope
+  const iframeUrl = `https://api.mapbox.com/styles/v1/repmx/cmpzn85ag002401rf6euw2xun.html?title=false&access_token=${mapboxToken}&zoomwheel=false#7.6/33.887/-118.135`
+  
   if (!mapboxToken) {
     console.error("Mapbox Access Token is missing. Check your .env file.")
   }
@@ -77,21 +80,21 @@ export function ServiceArea() {
             </div>
           </div>
 
-          {/* Right Column: Premium Map Viewport with Live Iframe Backdrop */}
+          {/* Right Column: Premium Map Viewport with Masked Attribution */}
           <div className="relative aspect-square w-full max-w-xl mx-auto rounded-xl border border-border/50 bg-[#070a12] overflow-hidden shadow-2xl shadow-primary/5 group">
             
-            {/* LAYER 1: The Live Embedded Map (Rendered cleanly through Mapbox GL JS) */}
-            {/* pointer-events-none guarantees smooth page scrolling with no mouse trapping */}
+            {/* LAYER 1: The Live Embedded Map */}
+            {/* The 56px height expansion paired with a negative top offset masks the mapbox logos cleanly outside the viewport clip */}
             <iframe 
               src={iframeUrl}
               title="Southern California Service Footprint"
-              className="absolute inset-0 h-full w-full border-none pointer-events-none opacity-90 transition-opacity duration-500 group-hover:opacity-100 scale-[1.02]"
+              className="absolute left-0 w-full top-[-28px] h-[calc(100%+56px)] border-none pointer-events-none opacity-90 transition-opacity duration-500 group-hover:opacity-100 scale-[1.01]"
               scrolling="no"
             />
 
             {/* LAYER 2: Blueprint Technical Grid Overlay */}
             <div 
-              className="absolute inset-0 pointer-events-none opacity-[0.15] mix-blend-overlay"
+              className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-overlay"
               style={{
                 backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), 
                                   linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -99,37 +102,30 @@ export function ServiceArea() {
               }}
             />
 
-            {/* LAYER 3: SVG Vector High-Tech Coverage Boundary Ring */}
-            {/* Centered perfectly over the exact center coords (#8.29/33.887/-118.135) */}
+            {/* LAYER 3: Minimalist Peripheral Boundary Ring */}
             <svg 
               className="absolute inset-0 h-full w-full pointer-events-none z-10"
               viewBox="0 0 100 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Outer Coverage Perimeter */}
               <circle 
                 cx="50" 
                 cy="50" 
                 r="38" 
-                className="stroke-primary/40 fill-primary/[0.02]" 
+                className="stroke-primary/30 fill-primary/[0.01]" 
                 strokeWidth="0.5" 
-                strokeDasharray="3 1.5"
+                strokeDasharray="4 2"
               />
-              <circle 
-                cx="50" 
-                cy="50" 
-                r="38.6" 
-                className="stroke-primary/10" 
-                strokeWidth="0.25"
-              />
-
-              {/* Technical Target Crosshair right at the focal center */}
-              <path d="M 50,43 L 50,45 M 50,55 L 50,57 M 43,50 L 45,50 M 55,50 L 57,50" className="stroke-primary/50" strokeWidth="0.35" />
-              <circle cx="50" cy="50" r="0.75" className="fill-primary" />
             </svg>
 
-            {/* LAYER 4: Heads-Up Display Panel Overlay */}
+            {/* LAYER 4: The Original Core Pulsing Radar Beacon */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 duration-1000" />
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-primary shadow-sm shadow-primary/50" />
+            </div>
+
+            {/* LAYER 5: Heads-Up Display Panel Overlay */}
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-lg border border-border/50 bg-background/90 backdrop-blur-md px-4 py-2.5 text-xs text-foreground font-medium shadow-md pointer-events-none select-none z-20 font-sans">
               <span className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
