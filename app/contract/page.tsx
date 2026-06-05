@@ -248,7 +248,7 @@ export default function ContractPage() {
             </div>
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-                Client / Property Owner / Tenant
+                Client / Owner / Tenant Name
               </label>
               <input
                 type="text"
