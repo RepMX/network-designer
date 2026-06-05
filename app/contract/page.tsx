@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { Printer, ArrowLeft } from "lucide-react"
 
 export default function ContractPage() {
-  // Complete Form State Matrix
+  // Form State Matrix
   const [formData, setFormData] = useState({
     streetAddress: "",
     city: "",
@@ -74,7 +74,7 @@ export default function ContractPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 print:bg-white print:py-0 print:px-0 font-sans antialiased text-slate-900 selection:bg-blue-100">
-      {/* Top Action Bar - Automatically hidden via print wrapper media layers */}
+      {/* Top Action Bar - Automatically hidden during print */}
       <div className="max-w-4xl mx-auto mb-6 flex items-center justify-between print:hidden">
         <a
           href="/"
@@ -92,7 +92,7 @@ export default function ContractPage() {
         </button>
       </div>
 
-      {/* Main Contract Container Container */}
+      {/* Main Contract Container */}
       <div className="max-w-4xl mx-auto bg-white border border-slate-200 shadow-xl rounded-xl p-8 sm:p-16 print:border-none print:shadow-none print:p-0">
         
         {/* Header Block */}
@@ -113,34 +113,35 @@ export default function ContractPage() {
           </div>
         </div>
 
-        {/* Parties & Date Block */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 p-6 bg-slate-50 rounded-lg border border-slate-100 print:bg-transparent print:border-none print:p-0 print:my-6">
+        {/* Parties & Date Block - Fixed 2-Column layout for Print */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-6 my-8 p-6 bg-slate-50 rounded-lg border border-slate-100 print:bg-transparent print:border-none print:p-0 print:my-6">
           
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+          {/* Left Column: Provider */}
+          <div className="space-y-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
               Service Provider
             </label>
-            <p className="text-sm font-semibold text-slate-800">Jedy Network &amp; Smart Home Design</p>
-            <p className="text-sm text-slate-500">Los Angeles, CA</p>
+            <p className="text-sm font-semibold text-slate-800 print:text-base">Jedy Network &amp; Smart Home Design</p>
+            <p className="text-sm text-slate-500 print:text-base">Los Angeles, CA</p>
           </div>
 
-          {/* Project Address Frame */}
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+          {/* Right Column: Project Address Layout */}
+          <div className="space-y-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
               Project / Property Address
             </label>
-            <div className="space-y-1.5">
+            
+            {/* Interactive Form Engine (Hidden completely on print to drop margins) */}
+            <div className="space-y-1.5 print:hidden">
               <input
                 type="text"
                 placeholder="Street Address"
                 value={formData.streetAddress}
                 onChange={(e) => handleChange("streetAddress", e.target.value)}
                 onBlur={() => handleBlur("streetAddress")}
-                className="w-full bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-medium"
+                className="w-full bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400"
               />
-              
-              {/* Dynamic Application Rendering Engine based on Print Media States */}
-              <div className="flex gap-2 print:hidden">
+              <div className="flex gap-2">
                 <input
                   type="text"
                   placeholder="City"
@@ -164,15 +165,19 @@ export default function ContractPage() {
                   className="w-20 bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400"
                 />
               </div>
+            </div>
 
-              {/* Resolved Inline String block specifically configured for clean print layouts */}
-              <div className="hidden print:block text-base font-medium text-slate-900 mt-0.5">
+            {/* Clean Print Outputs (Zero extra margins, mimics normal paragraph layout) */}
+            <div className="hidden print:block text-base font-medium text-slate-900 leading-tight">
+              <div>{formData.streetAddress || "—"}</div>
+              <div>
                 {formData.city}{formData.city && (formData.state || formData.zipCode) ? ", " : ""}{formData.state} {formData.zipCode}
               </div>
             </div>
           </div>
 
-          <div className="md:col-span-2 grid grid-cols-2 gap-4 pt-4 border-t border-slate-200/60 print:pt-4">
+          {/* Row Divider Grid */}
+          <div className="sm:col-span-2 print:col-span-2 grid grid-cols-2 gap-6 pt-4 border-t border-slate-200/60 print:grid-cols-2 print:pt-4">
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
                 Effective Date
@@ -203,7 +208,7 @@ export default function ContractPage() {
           </div>
         </div>
 
-        {/* Contract Terms Container */}
+        {/* Contract Terms */}
         <div className="space-y-6 text-sm text-slate-700 leading-relaxed">
           
           <section>
@@ -346,15 +351,15 @@ export default function ContractPage() {
           </section>
         </div>
 
-        {/* Fully Symmetrical, Balanced & Dynamic Authorization Matrix */}
-        <div className="mt-20 pt-12 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-16 print:mt-16 print:pt-8">
+        {/* Fully Symmetrical Authorization Matrix */}
+        <div className="mt-20 pt-12 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-16 print:mt-16 print:pt-8 print:grid-cols-2">
           
           {/* Left Side: Service Provider Column */}
           <div className="space-y-4">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Service Provider Authorization
             </div>
-            {/* Master Wet Signature Pad Anchor Block */}
+            {/* Signature Capture Anchor Line */}
             <div className="h-16 border-b border-dashed border-slate-200 print:border-slate-300"></div>
             
             <div className="space-y-3">
@@ -403,7 +408,7 @@ export default function ContractPage() {
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Client Acceptance &amp; Authorization
             </div>
-            {/* Master Wet Signature Pad Anchor Block */}
+            {/* Signature Capture Anchor Line */}
             <div className="h-16 border-b border-dashed border-slate-200 print:border-slate-300"></div>
             
             <div className="space-y-3">
