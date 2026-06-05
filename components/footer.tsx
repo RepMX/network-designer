@@ -60,6 +60,13 @@ export function Footer() {
               >
                 Blueprints
               </a>
+              <a
+                href="#protocol"
+                onClick={(e) => handleScroll(e, "protocol")}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+              >
+                Support
+              </a>
             </div>
           </div>
         </div>
