@@ -34,10 +34,18 @@ const packages = [
       "UniFi Protect AI security camera & localized NVR storage integration",
       <span key="home-assistant-scope">
         Infrastructure ready for AI smart home automation via{" "}
-        <img 
-          src="/home-assistant-logomark-monochrome-on-dark.svg" 
-          alt="Home Assistant Logo" 
-          className="inline-block h-3.5 w-3.5 align-baseline translate-y-[2px] mr-1 select-none"
+        <span 
+          className="inline-block h-3.5 w-3.5 bg-current align-baseline translate-y-[2px] mr-1 select-none"
+          style={{
+            WebkitMaskImage: 'url(/home-assistant-logomark-monochrome-on-dark.svg)',
+            maskImage: 'url(/home-assistant-logomark-monochrome-on-dark.svg)',
+            WebkitMaskSize: 'contain',
+            maskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat'
+          }}
+          role="img"
+          aria-label="Home Assistant Logo"
         />
         Home Assistant*
       </span>,
