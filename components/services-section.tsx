@@ -132,8 +132,8 @@ export function ServicesSection() {
               <div className="mt-6 flex-1">
                 <p className="text-sm font-medium text-foreground">Scope</p>
                 <ul className="mt-4 space-y-3">
-                  {pkg.scope.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm text-muted-foreground">
+                  {pkg.scope.map((item, idx) => (
+                    <li key={idx} className="flex gap-3 text-sm text-muted-foreground">
                       <Check className="h-4 w-4 flex-shrink-0 text-primary mt-0.5" />
                       <span>{item}</span>
                     </li>
