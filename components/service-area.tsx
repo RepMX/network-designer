@@ -21,12 +21,18 @@ const regions = [
 ]
 
 export function ServiceArea() {
+  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+  const iframeUrl = `https://api.mapbox.com/styles/v1/repmx/cmpzn85ag002401rf6euw2xun.html?title=false&access_token=${mapboxToken}&zoomwheel=false#8.29/33.887/-118.135`
+  if (!mapboxToken) {
+    console.error("Mapbox Access Token is missing. Check your .env file.")
+  }
+
   return (
     <section id="coverage" className="select-none py-24 lg:py-32 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           
-          {/* Left Column: Region Informational Cards (Pure CSS Hover Highlighting) */}
+          {/* Left Column: Region Informational Cards */}
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">
               Coverage Zone
@@ -44,7 +50,6 @@ export function ServiceArea() {
                   key={region.id}
                   className="group w-full text-left relative overflow-hidden flex gap-4 p-5 rounded-xl border border-border/40 bg-card/30 hover:border-primary hover:bg-card transition-all duration-300"
                 >
-                  {/* Subtle hover gradient glow layer */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   <div className="relative flex gap-4 w-full z-10">
@@ -72,91 +77,62 @@ export function ServiceArea() {
             </div>
           </div>
 
-          {/* Right Column: Centered Macro Blueprint Map Viewport */}
-          <div className="relative aspect-square w-full max-w-xl mx-auto rounded-xl border border-border/50 bg-[#070a12] overflow-hidden shadow-2xl shadow-primary/5">
-            <div className="absolute inset-0 w-full h-full">
-              
-              <svg 
-                className="absolute inset-0 h-full w-full"
-                viewBox="0 0 400 400"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Blueprint Grid Lines */}
-                <defs>
-                  <pattern id="static-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="white" strokeOpacity="0.03" strokeWidth="0.5" />
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#static-grid)" />
-
-                {/* Topographic Mountain Accents (San Gabriel / Mountain Ranges) */}
-                <path d="M 40,50 Q 130,30 220,45 T 400,35" className="stroke-border/20" strokeWidth="1" strokeDasharray="4 4" />
-                <path d="M 80,65 Q 180,50 280,60 T 400,55" className="stroke-border/10" strokeWidth="0.75" />
-
-                {/* Regional Ocean Shape (Zoomed out further West to fit Thousand Oaks/Ventura lines) */}
-                <path 
-                  d="M 0,150 Q 60,170 125,215 Q 160,255 185,265 Q 240,300 285,350 T 340,400 L 0,400 Z" 
-                  className="fill-background/60 stroke-border/60"
-                  strokeWidth="1.5"
-                />
-
-                {/* Main Transportation Infrastructure Matrix */}
-                {/* US-101 / I-5 Axis (Thousand Oaks -> SF Valley -> DTLA -> Anaheim -> Irvine) */}
-                <path d="M 0,110 Q 60,125 110,140 Q 160,165 190,195 Q 245,250 285,300 T 370,400" className="stroke-muted-foreground/35" strokeWidth="1.25" />
-                
-                {/* I-10 Corridor (Santa Monica -> DTLA -> Inland Empire Corridor) */}
-                <path d="M 125,215 L 190,195 L 300,195 L 400,195" className="stroke-muted-foreground/35" strokeWidth="1.25" />
-                
-                {/* I-405 Coastal Pipeline */}
-                <path d="M 110,140 Q 120,210 145,245 Q 185,265 245,250 T 285,300" className="stroke-primary/40" strokeWidth="1" strokeDasharray="2 2" />
-
-                {/* SR-91 Cross-Basin Connector (South Bay -> Anaheim -> Corona) */}
-                <path d="M 155,255 L 245,250 Q 295,245 330,240" className="stroke-muted-foreground/25" strokeWidth="1" />
-
-                {/* I-210 Foothills Pipeline (Pasadena -> Rancho Cucamonga) */}
-                <path d="M 110,140 L 195,140 L 305,140 L 400,140" className="stroke-muted-foreground/25" strokeWidth="1" />
-
-                {/* STATIC CONCENTRIC BROADCAST FIELDS (Centered exactly on the DTLA infrastructure hub) */}
-                <circle cx="190" cy="195" r="155" className="stroke-primary/25 fill-primary/[0.01] animate-pulse" strokeWidth="1" />
-                <circle cx="190" cy="195" r="105" className="stroke-primary/10 fill-transparent" strokeWidth="1" />
-                <circle cx="190" cy="195" r="55" className="stroke-foreground/[0.03] fill-transparent" strokeWidth="1" />
-
-                {/* Blueprint Sector Technical Indicators */}
-                <g className="font-sans text-[8px] fill-muted-foreground/30 font-semibold tracking-widest uppercase">
-                  <text x="135" y="165">LA CORE</text>
-                  <text x="240" y="280">OC SOUTH</text>
-                  <text x="260" y="175">IE GATE</text>
-                </g>
-
-                {/* Regional City Node Placement Markers */}
-                <g className="font-sans text-[9px] fill-muted-foreground font-medium tracking-wider uppercase">
-                  <text x="20" y="125" className="fill-foreground/90 font-semibold">Thousand Oaks</text>
-                  <text x="85" y="70" className="fill-muted-foreground/40">Santa Clarita</text>
-                  <text x="45" y="190" className="fill-muted-foreground/40">Malibu</text>
-                  <text x="75" y="222">Santa Monica</text>
-                  <text x="195" y="140">Pasadena</text>
-                  <text x="195" y="202" className="fill-foreground font-bold">DTLA</text>
-                  <text x="140" y="282" className="fill-foreground font-semibold">Long Beach</text>
-                  <text x="245" y="242">Anaheim</text>
-                  <text x="295" y="305" className="fill-foreground/90">Irvine</text>
-                  <text x="235" y="345" className="fill-muted-foreground/50">Newport</text>
-                  <text x="300" y="190">Ontario</text>
-                  <text x="265" y="115" className="fill-muted-foreground/50">Rancho Cucamonga</text>
-                  <text x="310" y="250">Corona</text>
-                </g>
-
-                {/* Core Unified Infrastructure Node */}
-                <circle cx="190" cy="195" r="7" className="fill-primary/20 animate-ping" />
-                <circle cx="190" cy="195" r="3.5" className="fill-primary" filter="drop-shadow(0 0 6px #3b82f6)" />
-              </svg>
-
-            </div>
+          {/* Right Column: Premium Map Viewport with Live Iframe Backdrop */}
+          <div className="relative aspect-square w-full max-w-xl mx-auto rounded-xl border border-border/50 bg-[#070a12] overflow-hidden shadow-2xl shadow-primary/5 group">
             
-            {/* Heads-Up Display Panel Overlay */}
+            {/* LAYER 1: The Live Embedded Map (Rendered cleanly through Mapbox GL JS) */}
+            {/* pointer-events-none guarantees smooth page scrolling with no mouse trapping */}
+            <iframe 
+              src={iframeUrl}
+              title="Southern California Service Footprint"
+              className="absolute inset-0 h-full w-full border-none pointer-events-none opacity-90 transition-opacity duration-500 group-hover:opacity-100 scale-[1.02]"
+              scrolling="no"
+            />
+
+            {/* LAYER 2: Blueprint Technical Grid Overlay */}
+            <div 
+              className="absolute inset-0 pointer-events-none opacity-[0.15] mix-blend-overlay"
+              style={{
+                backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), 
+                                  linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+                backgroundSize: '32px 32px'
+              }}
+            />
+
+            {/* LAYER 3: SVG Vector High-Tech Coverage Boundary Ring */}
+            {/* Centered perfectly over the exact center coords (#8.29/33.887/-118.135) */}
+            <svg 
+              className="absolute inset-0 h-full w-full pointer-events-none z-10"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Outer Coverage Perimeter */}
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="38" 
+                className="stroke-primary/40 fill-primary/[0.02]" 
+                strokeWidth="0.5" 
+                strokeDasharray="3 1.5"
+              />
+              <circle 
+                cx="50" 
+                cy="50" 
+                r="38.6" 
+                className="stroke-primary/10" 
+                strokeWidth="0.25"
+              />
+
+              {/* Technical Target Crosshair right at the focal center */}
+              <path d="M 50,43 L 50,45 M 50,55 L 50,57 M 43,50 L 45,50 M 55,50 L 57,50" className="stroke-primary/50" strokeWidth="0.35" />
+              <circle cx="50" cy="50" r="0.75" className="fill-primary" />
+            </svg>
+
+            {/* LAYER 4: Heads-Up Display Panel Overlay */}
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-lg border border-border/50 bg-background/90 backdrop-blur-md px-4 py-2.5 text-xs text-foreground font-medium shadow-md pointer-events-none select-none z-20 font-sans">
               <span className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                 Macro Scope: Full Operational Footprint
               </span>
               <span className="text-muted-foreground">HQ: Los Angeles, CA</span>
