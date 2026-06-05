@@ -23,6 +23,21 @@ export default function ContractPage() {
     selectedTier: "",
   })
 
+  // Autofill Effective Date with local today's date on mount
+  React.useEffect(() => {
+    const today = new Date()
+    const yyyy = today.getFullYear()
+    const mm = String(today.getMonth() + 1).padStart(2, '0')
+    const dd = String(today.getDate()).padStart(2, '0')
+    const formattedToday = `${yyyy}-${mm}-${dd}`
+
+    setFormData((prev) => ({
+      ...prev,
+      effectiveDate: prev.effectiveDate || formattedToday,
+      providerDate: prev.providerDate || formattedToday,
+    }))
+  }, [])
+
   // Trigger Native System Print Canvas
   const handlePrint = () => {
     if (typeof window !== "undefined") {
@@ -205,6 +220,7 @@ export default function ContractPage() {
                   placeholder="Zip"
                   value={formData.zipCode}
                   onChange={(e) => handleChange("zipCode", e.target.value)}
+                  onBlur={() => handleBlur("zipCode")}
                   className="w-20 bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400"
                 />
               </div>
