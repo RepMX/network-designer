@@ -253,7 +253,7 @@ export default function ContractPage() {
                 {formData.clientName ? (
                   formData.clientName
                 ) : (
-                  <div className="w-50 border-b border-slate-300 h-6"></div>
+                  <div className="w-65 border-b border-slate-300 h-6"></div>
                 )}
               </div>
             </div>
