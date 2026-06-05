@@ -24,7 +24,7 @@ export function ServiceArea() {
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
   
   // Adjusted zoom from 8.29 down to 7.6 for a cleaner wide frame scope
-  const iframeUrl = `https://api.mapbox.com/styles/v1/repmx/cmpzn85ag002401rf6euw2xun.html?title=false&access_token=${mapboxToken}&zoomwheel=false#7.6/33.887/-118.135`
+  const iframeUrl = `https://api.mapbox.com/styles/v1/repmx/cmpzn85ag002401rf6euw2xun.html?title=false&access_token=${mapboxToken}&zoomwheel=false#7.8/33.887/-118.135`
   
   if (!mapboxToken) {
     console.error("Mapbox Access Token is missing. Check your .env file.")
