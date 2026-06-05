@@ -393,7 +393,7 @@ export default function ContractPage() {
                   <strong className="text-slate-800">Software Architecture & Dashboards:</strong> Writing custom YAML scripts, building advanced logic automation paths, implementing third-party software integrations, and designing custom graphical UI/UX user tablet dashboards.
                 </li>
                 <li>
-                  <strong className="text-slate-800">IoT End-Node Device Onboarding:</strong> The manual pairing, cryptographic authentication, Zigbee/Z-Wave mesh optimization, or custom firmware flashing of individual client-owned smart switches, motorized shades, environmental sensors, and lighting arrays.
+                  <strong className="text-slate-800">IoT Device Onboarding:</strong> The manual pairing, cryptographic authentication, Zigbee/Z-Wave mesh optimization, or custom firmware flashing of individual client-owned smart switches, motorized shades, environmental sensors, and lighting arrays.
                 </li>
               </ul>
             </div>
