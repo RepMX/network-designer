@@ -32,15 +32,25 @@ export function ServiceArea() {
   useEffect(() => {
     if (!mapboxToken || !mapContainerRef.current) return
 
-    // 1. Inject Mapbox GL stylesheet dynamically at runtime to keep builds clean
+    // 1. Inject Mapbox GL stylesheet dynamically
     const link = document.createElement("link")
     link.rel = "stylesheet"
     link.href = "https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
     document.head.appendChild(link)
 
+    // 2. Inject CSS overrides to cleanly hide the logo & attribution elements
+    const style = document.createElement("style")
+    style.innerHTML = `
+      .mapboxgl-ctrl-logo, 
+      .mapboxgl-ctrl-attrib {
+        display: none !important;
+      }
+    `
+    document.head.appendChild(style)
+
     let map: any
 
-    // 2. Dynamically import mapbox-gl to safe-guard Next.js SSR pre-rendering
+    // 3. Dynamically import mapbox-gl to safe-guard Next.js SSR pre-rendering
     import("mapbox-gl").then((mapboxglModule) => {
       const mapboxgl = mapboxglModule.default
       mapboxgl.accessToken = mapboxToken
@@ -48,17 +58,18 @@ export function ServiceArea() {
       map = new mapboxgl.Map({
         container: mapContainerRef.current!,
         style: "mapbox://styles/repmx/cmpzn85ag002401rf6euw2xun",
-        center: [-118.135, 33.887], // Mapbox uses [Longitude, Latitude] order
+        center: [-118.135, 33.887], // [Longitude, Latitude]
         zoom: 7.8,                  // Your customized accurate coverage zoom level
         interactive: false,         // Instantly strips zoom controls, panning, and wheel listeners
         attributionControl: false,   // Keeps the viewport interface completely empty
       })
     })
 
-    // Cleanup reference instances on component unmount
+    // Cleanup reference instances on component unmount to prevent leaks
     return () => {
       if (map && typeof map.remove === "function") map.remove()
       if (link.parentNode) link.parentNode.removeChild(link)
+      if (style.parentNode) style.parentNode.removeChild(style)
     }
   }, [mapboxToken])
 
@@ -115,10 +126,10 @@ export function ServiceArea() {
           {/* Right Column: Clean Map Viewport */}
           <div className="relative aspect-square w-full max-w-xl mx-auto rounded-xl border border-border/50 bg-[#070a12] overflow-hidden shadow-2xl shadow-primary/5 group">
             
-            {/* LAYER 1: Native Vector Map Instance Container */}
+            {/* LAYER 1: Native Vector Map Instance Container (Now beautifully clean) */}
             <div 
               ref={mapContainerRef}
-              className="absolute inset-0 h-full w-full opacity-90 transition-opacity duration-500 group-hover:opacity-100 scale-[1.01]"
+              className="absolute inset-0 h-full w-full opacity-90 transition-opacity duration-500 group-hover:opacity-100"
             />
 
             {/* LAYER 2: Blueprint Technical Grid Overlay */}
