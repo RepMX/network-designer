@@ -277,7 +277,7 @@ export default function ContractPage() {
               1. Scope of Services
             </h2>
             <p>
-              The Provider agrees to perform technical architecture, engineering consulting, installation, and optimization services as designated below. Services may include physical space environmental assessments, logical network topology blueprints, network equipment installation, perimeter gateway security hardening (IDS/IPS configuration), strict logical VLAN network segmentation, and smart home readiness provisioning (including Home Assistant localized framework planning).
+              The Provider agrees to perform technical architecture, engineering consulting, installation, and optimization services as designated below. Services may include physical space environmental assessments, logical network topology blueprints, network equipment installation, perimeter gateway security hardening (IDS/IPS configuration), and strict logical VLAN network segmentation. This agreement explicitly excludes structural low-voltage cable pulling, wall drilling, or routing wire through building envelopes. Any structural modifications must be executed by a licensed third-party contractor or are the sole responsibility of the Client.
             </p>
           </section>
 
@@ -359,13 +359,22 @@ export default function ContractPage() {
             </div>
             
             <p className="text-xs text-slate-500 italic">
-              *Terms: A baseline commencement deposit of 50% is due upon execution of this agreement. The remaining 50% balance is due instantly upon logical network handover, delivery of custom network blueprints, and administrative credential transfers.
+              *Terms: A baseline commencement deposit of 50% is due upon execution of this agreement. The remaining 50% balance is due instantly upon logical network handover, delivery of network blueprints, and administrative credential transfers. Handover and final billing shall not be delayed or conditioned upon upstream ISP outages, backordered client-procured hardware components, or third-party client device enrollment.
             </p>
           </section>
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              4. Client Obligations & Access
+              4. Tenant Permissions
+            </h2>
+            <p>
+              The Client warrants that they either own the subject property or have secured explicit written authorization from the property owner to execute the modifications, equipment mounting, and hardware placements detailed in the scope of work. The Client agrees to indemnify the Provider against any landlord or property management disputes arising from execution of this contract.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              5. Client Obligations & Access
             </h2>
             <p>
               The Client agrees to provide active, operational Internet Service Provider (ISP) lines to the perimeter gateway position during configuration loops. The Client shall grant the Provider safe physical access to logical utility closets, enclosure frames, and property structures necessary to analyze radio frequency (RF) signal propagation path auditing and place hardware components.
@@ -374,7 +383,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              5. Local-First Data Sovereignty & Credential Transfers
+              6. Local-First Data Sovereignty & Credential Transfers
             </h2>
             <p>
               Systems are explicitly engineered to prioritize localized, local-first architectures ensuring privacy and operation completely independent of public cloud states. Upon project closure, all localized master administrator administrative login accounts, encrypted keys, logical gateway topologies, and configuration files will be completely transferred to the Client. The Provider retains zero backdoor access codes, passive remote loops, or data collection routes unless explicit off-site support retainers are established by separate instrument.
@@ -383,10 +392,28 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              6. Limitation of Liability
+              7. Hardware Dead-on-Arrival (DOA) & Procurement Stalls
             </h2>
             <p>
-              The Provider's liability for any network disruptions, active intrusion attempts, software flaws in public third-party open-source stacks (e.g., Home Assistant Core updates), firmware drops, or component hardware damage shall be legally capped at an amount not to exceed the total cash service fee paid to the Provider under this specific work order. The Provider is an independent infrastructure designer and is not responsible for upstream infrastructure outages originating from the Client's Internet Service Provider.
+              The Client agrees to procure all required hardware within seven (7) business days of design approval to prevent project stalling. The Provider is not responsible for manufacturing defects, shipping delays, or hardware arriving Dead-on-Arrival (DOA). Extensive troubleshooting, processing manufacturer RMAs, or returning defective client-procured hardware is outside the flat-rate scope and will be billed under a separate change order.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              8. Limitation of Liability
+            </h2>
+            <p>
+              The Provider's liability for any network disruptions, active intrusion attempts, software flaws in public third-party open-source stacks (e.g., Home Assistant Core updates), firmware bugs, or component hardware damage shall be legally capped at an amount not to exceed the total cash service fee paid to the Provider under this specific work order. The Provider is an independent infrastructure designer and is not responsible for upstream infrastructure outages originating from the Client's Internet Service Provider. Upon administrative credential transfer, the Client assumes absolute ownership and full responsibility for network security, password preservation, and system configuration backups. Any post-handover support, recovery of lost administrative access, or remediation of client-introduced configuration errors is explicitly excluded from this flat fee and will be treated as a new service engagement.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              9. Governing Law & Dispute Resolution
+            </h2>
+            <p>
+              This Agreement shall be governed by, and construed in accordance with, the laws of the State of California, with exclusive jurisdiction and venue in the courts of Los Angeles County. If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect. This instrument constitutes the entire agreement between the parties regarding this work order, superseding all prior oral agreements, text communications, or email negotiations. Amendments or modifications are valid only if executed in a mutually signed written change order.
             </p>
           </section>
         </div>
