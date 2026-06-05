@@ -101,6 +101,22 @@ export default function ContractPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 print:bg-white print:py-0 print:px-0 font-sans antialiased text-slate-900 selection:bg-blue-100">
+      
+      {/* Dynamic Paged Media Counter Style Rules */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media print {
+          @page {
+            margin-bottom: 20mm;
+            @bottom-right {
+              content: "Page " counter(page) " of " counter(pages);
+              font-family: ui-sans-serif, system-ui, sans-serif;
+              font-size: 10px;
+              color: #64748b;
+            }
+          }
+        }
+      `}} />
+
       {/* Top Action Bar */}
       <div className="max-w-4xl mx-auto mb-6 flex items-center justify-between print:hidden">
         <a
