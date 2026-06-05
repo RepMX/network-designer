@@ -37,7 +37,7 @@ const packages = [
         <img 
           src="/home-assistant-logomark-monochrome-on-dark.svg" 
           alt="Home Assistant Logo" 
-          className="inline-block h-[1.65em] w-[1.65em] align-baseline translate-y-[0.28em] mr-1 select-none"
+          className="inline-block h-3.5 w-3.5 align-baseline translate-y-[2px] mr-1 select-none"
         />
         Home Assistant*
       </span>,
