@@ -243,7 +243,7 @@ export default function ContractPage() {
               </label>
               <input
                 type="text"
-                placeholder="Full Name"
+                placeholder="Client Name"
                 value={formData.clientName}
                 onChange={(e) => handleChange("clientName", e.target.value)}
                 onBlur={() => handleBlur("clientName")}
@@ -253,7 +253,7 @@ export default function ContractPage() {
                 {formData.clientName ? (
                   formData.clientName
                 ) : (
-                  <div className="w-36 border-b border-slate-300 h-6"></div>
+                  <div className="w-50 border-b border-slate-300 h-6"></div>
                 )}
               </div>
             </div>
@@ -494,7 +494,7 @@ export default function ContractPage() {
                   {formData.clientDate ? (
                     formatDateForPrint(formData.clientDate)
                   ) : (
-                    <span className="inline-block border-b border-slate-300 w-27 h-4"></span>
+                    <span className="inline-block border-b border-slate-300 w-25 h-4"></span>
                   )}
                 </span>
               </div>
