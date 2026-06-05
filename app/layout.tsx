@@ -13,23 +13,27 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: 'https://jedy.cc/favicon.ico',
+        url: '/favicon.ico',
         sizes: 'any',
       },
       {
-        url: 'https://jedy.cc/favicon.png',
+        url: '/favicon.png',
         type: 'image/png',
       },
       {
-        url: 'https://jedy.cc/favicon.png',
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/favicon.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: 'https://jedy.cc/favicon.png',
+        url: '/favicon.png',
         media: '(prefers-color-scheme: dark)',
       },
     ],
-    apple: 'https://jedy.cc/favicon.png',
+    apple: '/favicon.png',
   },
 }
 
