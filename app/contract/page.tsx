@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { Printer, ArrowLeft } from "lucide-react"
 
 export default function ContractPage() {
-  // Form State Matrix
+  // Complete Form State Matrix
   const [formData, setFormData] = useState({
     streetAddress: "",
     city: "",
@@ -48,6 +48,25 @@ export default function ContractPage() {
     }
   }
 
+  // Auto-corrects the Custom Price field with commas and two decimal places on blur
+  const handleCustomPriceBlur = () => {
+    if (!formData.customPrice) return
+    const cleanNumeric = formData.customPrice.replace(/[^0-9.]/g, "")
+    const parsedNumber = parseFloat(cleanNumeric)
+    
+    if (!isNaN(parsedNumber)) {
+      const formattedPrice = new Intl.NumberFormat("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(parsedNumber)
+      
+      setFormData((prev) => ({
+        ...prev,
+        customPrice: formattedPrice,
+      }))
+    }
+  }
+
   // Field Sanity Filters
   const handleChange = (field: keyof typeof formData, value: string) => {
     let cleanValue = value
@@ -72,9 +91,16 @@ export default function ContractPage() {
     return `${month}/${day}/${year}`
   }
 
+  // Renders a high-fidelity fixed box container for unselected or selected items in print layout blocks
+  const renderPrintCheckbox = (isCurrentTier: boolean) => (
+    <span className="hidden print:inline-flex items-center justify-center size-3.5 border border-slate-400 rounded-sm mr-3 font-mono text-[10px] font-bold text-slate-900 select-none align-middle transform -translate-y-[1px]">
+      {isCurrentTier ? "X" : "\u00A0"}
+    </span>
+  )
+
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 print:bg-white print:py-0 print:px-0 font-sans antialiased text-slate-900 selection:bg-blue-100">
-      {/* Top Action Bar - Automatically hidden during print */}
+      {/* Top Action Bar */}
       <div className="max-w-4xl mx-auto mb-6 flex items-center justify-between print:hidden">
         <a
           href="/"
@@ -113,16 +139,18 @@ export default function ContractPage() {
           </div>
         </div>
 
-        {/* Parties & Date Block - Fixed 2-Column layout for Print */}
+        {/* Parties & Date Block */}
         <div className="grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-6 my-8 p-6 bg-slate-50 rounded-lg border border-slate-100 print:bg-transparent print:border-none print:p-0 print:my-6">
           
-          {/* Left Column: Provider */}
+          {/* Left Column: Service Provider */}
           <div className="space-y-1">
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
               Service Provider
             </label>
-            <p className="text-sm font-semibold text-slate-800 print:text-base">Jedy Network &amp; Smart Home Design</p>
-            <p className="text-sm text-slate-500 print:text-base">Los Angeles, CA</p>
+            <div className="text-sm sm:text-base print:text-base font-semibold text-slate-800 leading-normal">
+              <div>Jedy Network &amp; Smart Home Design</div>
+              <div className="text-slate-500 font-normal mt-0.5">Los Angeles, CA</div>
+            </div>
           </div>
 
           {/* Right Column: Project Address Layout */}
@@ -131,7 +159,7 @@ export default function ContractPage() {
               Project / Property Address
             </label>
             
-            {/* Interactive Form Engine (Hidden completely on print to drop margins) */}
+            {/* Interactive Form Engine (Hidden on print to drop dynamic field padding) */}
             <div className="space-y-1.5 print:hidden">
               <input
                 type="text"
@@ -167,10 +195,10 @@ export default function ContractPage() {
               </div>
             </div>
 
-            {/* Clean Print Outputs (Zero extra margins, mimics normal paragraph layout) */}
-            <div className="hidden print:block text-base font-medium text-slate-900 leading-tight">
+            {/* Clean Print Outputs (Uses exact matching structure and leading-normal to align lines) */}
+            <div className="hidden print:block text-base font-semibold text-slate-900 leading-normal">
               <div>{formData.streetAddress || "—"}</div>
-              <div>
+              <div className="font-normal text-slate-900 mt-0.5">
                 {formData.city}{formData.city && (formData.state || formData.zipCode) ? ", " : ""}{formData.state} {formData.zipCode}
               </div>
             </div>
@@ -208,7 +236,7 @@ export default function ContractPage() {
           </div>
         </div>
 
-        {/* Contract Terms */}
+        {/* Contract Terms Container */}
         <div className="space-y-6 text-sm text-slate-700 leading-relaxed">
           
           <section>
@@ -270,7 +298,7 @@ export default function ContractPage() {
                       />
                     </td>
                     <td className="p-3 font-medium text-slate-800">
-                      <span className="hidden print:inline mr-2">{formData.selectedTier === "core" ? "[X]" : "[ ]"}</span>
+                      {renderPrintCheckbox(formData.selectedTier === "core")}
                       Secure Core Architecture Deployment
                     </td>
                     <td className="p-3 text-right text-slate-600 font-medium">$699.00</td>
@@ -289,7 +317,7 @@ export default function ContractPage() {
                       />
                     </td>
                     <td className="p-3 font-medium text-slate-800">
-                      <span className="hidden print:inline mr-2">{formData.selectedTier === "smart" ? "[X]" : "[ ]"}</span>
+                      {renderPrintCheckbox(formData.selectedTier === "smart")}
                       Smart Home &amp; Business Infrastructure Deployment
                     </td>
                     <td className="p-3 text-right text-slate-600 font-medium">$1,399.00</td>
@@ -308,7 +336,7 @@ export default function ContractPage() {
                       />
                     </td>
                     <td className="p-3 font-medium text-slate-800">
-                      <span className="hidden print:inline mr-2">{formData.selectedTier === "custom" ? "[X]" : "[ ]"}</span>
+                      {renderPrintCheckbox(formData.selectedTier === "custom")}
                       Bespoke Custom Premium Enterprise Blueprint Workflow
                     </td>
                     <td className="p-3 text-right text-slate-600 font-medium">
@@ -319,6 +347,7 @@ export default function ContractPage() {
                         value={formData.customPrice}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => handleChange("customPrice", e.target.value)}
+                        onBlur={handleCustomPriceBlur}
                         className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none print:border-none print:w-auto"
                       />
                     </td>
