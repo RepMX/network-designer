@@ -239,11 +239,11 @@ export default function ContractPage() {
             </div>
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-                Client / Property Owner
+                Client / Property Owner / Tenant
               </label>
               <input
                 type="text"
-                placeholder="Client Full Name"
+                placeholder=""
                 value={formData.clientName}
                 onChange={(e) => handleChange("clientName", e.target.value)}
                 onBlur={() => handleBlur("clientName")}
@@ -440,7 +440,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Client Name"
+                    placeholder=""
                     value={formData.clientRep}
                     onChange={(e) => handleChange("clientRep", e.target.value)}
                     onBlur={() => handleBlur("clientRep")}
@@ -451,7 +451,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Property Tenant"
+                    placeholder=""
                     value={formData.clientTitle}
                     onChange={(e) => handleChange("clientTitle", e.target.value)}
                     onBlur={() => handleBlur("clientTitle")}
