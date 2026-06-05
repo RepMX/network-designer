@@ -195,7 +195,7 @@ export default function ContractPage() {
               </div>
             </div>
 
-            {/* Clean Print Outputs (Uses exact matching structure and leading-normal to align lines) */}
+            {/* Clean Print Outputs */}
             <div className="hidden print:block text-base font-semibold text-slate-900 leading-normal">
               <div>{formData.streetAddress || "—"}</div>
               <div className="font-normal text-slate-900 mt-0.5">
@@ -340,16 +340,23 @@ export default function ContractPage() {
                       Bespoke Custom Premium Enterprise Blueprint Workflow
                     </td>
                     <td className="p-3 text-right text-slate-600 font-medium">
-                      <span className="print:hidden">$ </span>
-                      <input
-                        type="text"
-                        placeholder="_________________"
-                        value={formData.customPrice}
-                        onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => handleChange("customPrice", e.target.value)}
-                        onBlur={handleCustomPriceBlur}
-                        className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none print:border-none print:w-auto"
-                      />
+                      {/* Screen View */}
+                      <div className="print:hidden inline-flex items-center justify-end">
+                        <span className="mr-0.5">$</span>
+                        <input
+                          type="text"
+                          placeholder="_________________"
+                          value={formData.customPrice}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => handleChange("customPrice", e.target.value)}
+                          onBlur={handleCustomPriceBlur}
+                          className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none"
+                        />
+                      </div>
+                      {/* Print View */}
+                      <span className="hidden print:inline text-slate-900 font-medium">
+                        {formData.customPrice ? `$${formData.customPrice}` : "_________________"}
+                      </span>
                     </td>
                   </tr>
                 </tbody>
