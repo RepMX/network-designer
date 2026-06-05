@@ -1,13 +1,72 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { Printer, ArrowLeft } from "lucide-react"
 
 export default function ContractPage() {
+  // Form State
+  const [formData, setFormData] = useState({
+    streetAddress: "",
+    city: "",
+    state: "",
+    zipCode: "",
+    effectiveDate: "",
+    clientName: "",
+    providerRep: "",
+    providerDate: "",
+    clientDate: "",
+    customPrice: "",
+    selectedTier: "",
+  })
+
+  // Print function
   const handlePrint = () => {
     if (typeof window !== "undefined") {
       window.print()
     }
+  }
+
+  // Helper: Auto-capitalize Names/Streets/Cities (Title Case)
+  const toTitleCase = (str: string) => {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  }
+
+  // Handle transformations on blur to prevent cursor jumps while typing
+  const handleBlur = (field: keyof typeof formData) => {
+    if (["streetAddress", "city", "clientName", "providerRep"].includes(field)) {
+      setFormData((prev) => ({
+        ...prev,
+        [field]: toTitleCase(prev[field]),
+      }))
+    }
+  }
+
+  const handleChange = (field: keyof typeof formData, value: string) => {
+    let cleanValue = value
+
+    // Instant formatting for strict structural fields
+    if (field === "state") {
+      cleanValue = value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2)
+    }
+    if (field === "zipCode") {
+      cleanValue = value.toUpperCase().replace(/[^A-Z0-9\s-]/g, "").slice(0, 10)
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      [field]: cleanValue,
+    }))
+  }
+
+  // Helper: Format YYYY-MM-DD input date to MM/DD/YYYY for printing
+  const formatDateForPrint = (dateStr: string) => {
+    if (!dateStr) return "—"
+    const [year, month, day] = dateStr.split("-")
+    return `${month}/${day}/${year}`
   }
 
   return (
@@ -40,7 +99,7 @@ export default function ContractPage() {
               Service Agreement
             </h1>
             <p className="text-sm text-slate-500 mt-1">
-              Master Infrastructure &amp; Network Design Contract
+              Infrastructure Design Contract
             </p>
           </div>
           <div className="text-left sm:text-right">
@@ -51,34 +110,87 @@ export default function ContractPage() {
           </div>
         </div>
 
-        {/* Parties & Date Block */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 p-4 bg-slate-50 rounded-lg border border-slate-100 print:bg-transparent print:border-none print:p-0 print:my-6">
+        {/* Parties & Date Block (Electronic Inputs) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 p-6 bg-slate-50 rounded-lg border border-slate-100 print:bg-transparent print:border-none print:p-0 print:my-6">
+          
+          {/* Provider Panel */}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
               Service Provider
             </label>
-            <p className="text-sm font-medium text-slate-800">Jedy Network &amp; Smart Home Design</p>
+            <p className="text-sm font-semibold text-slate-800">Jedy Network &amp; Smart Home Design</p>
             <p className="text-sm text-slate-500">Los Angeles, CA</p>
           </div>
+
+          {/* Project Address Fields */}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Client / Property Owner
+              Project / Property Address
             </label>
-            <div className="h-5 border-b border-slate-300 w-full mb-1 print:border-slate-400"></div>
-            <div className="h-5 border-b border-slate-300 w-full print:border-slate-400"></div>
+            <div className="space-y-1.5">
+              <input
+                type="text"
+                placeholder="Street Address"
+                value={formData.streetAddress}
+                onChange={(e) => handleChange("streetAddress", e.target.value)}
+                onBlur={() => handleBlur("streetAddress")}
+                className="w-full bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-medium"
+              />
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={formData.city}
+                  onChange={(e) => handleChange("city", e.target.value)}
+                  onBlur={() => handleBlur("city")}
+                  className="flex-1 bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-medium"
+                />
+                <input
+                  type="text"
+                  placeholder="CA"
+                  value={formData.state}
+                  onChange={(e) => handleChange("state", e.target.value)}
+                  className="w-12 text-center bg-white border border-slate-200 rounded px-1 py-1 text-sm focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-medium"
+                />
+                <input
+                  type="text"
+                  placeholder="Zip"
+                  value={formData.zipCode}
+                  onChange={(e) => handleChange("zipCode", e.target.value)}
+                  className="w-20 bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-medium"
+                />
+              </div>
+            </div>
           </div>
-          <div className="md:col-span-2 grid grid-cols-2 gap-4 pt-2 border-t border-slate-200/60 print:pt-4">
+
+          {/* Bottom Metas */}
+          <div className="md:col-span-2 grid grid-cols-2 gap-4 pt-4 border-t border-slate-200/60 print:pt-4">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-0.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
                 Effective Date
               </label>
-              <div className="h-5 border-b border-slate-300 w-32 print:border-slate-400"></div>
+              <input
+                type="date"
+                value={formData.effectiveDate}
+                onChange={(e) => handleChange("effectiveDate", e.target.value)}
+                className="bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400 print:hidden"
+              />
+              <span className="hidden print:inline-block text-base font-medium text-slate-900">
+                {formatDateForPrint(formData.effectiveDate)}
+              </span>
             </div>
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-0.5">
-                Project/Property Address
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                Client / Property Owner
               </label>
-              <div className="h-5 border-b border-slate-300 w-full print:border-slate-400"></div>
+              <input
+                type="text"
+                placeholder="Client Full Name"
+                value={formData.clientName}
+                onChange={(e) => handleChange("clientName", e.target.value)}
+                onBlur={() => handleBlur("clientName")}
+                className="w-full bg-white border border-slate-200 rounded px-2.5 py-1 text-sm focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-medium"
+              />
             </div>
           </div>
         </div>
@@ -120,30 +232,89 @@ export default function ContractPage() {
             <p>
               Services are billed as a strict flat-rate project package fee, completely immune to hidden hourly extensions. The specified package total for this work order is detailed as:
             </p>
+            
+            {/* Table Interactivity */}
             <div className="my-3 border border-slate-200 rounded-md overflow-hidden">
               <table className="w-full text-left text-xs">
                 <thead className="bg-slate-50 text-slate-500 font-semibold print:bg-transparent">
                   <tr>
+                    <th className="p-3 w-12 text-center print:hidden">Select</th>
                     <th className="p-3">Selected Service Architecture Tier</th>
                     <th className="p-3 text-right">Flat Service Fee</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
-                  <tr>
-                    <td className="p-3 font-medium text-slate-800">[ ] Secure Core Architecture Deployment</td>
-                    <td className="p-3 text-right text-slate-600">$699.00</td>
+                  <tr 
+                    className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === "core" ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
+                    onClick={() => handleChange("selectedTier", "core")}
+                  >
+                    <td className="p-3 text-center print:hidden">
+                      <input 
+                        type="radio" 
+                        name="tier" 
+                        checked={formData.selectedTier === "core"} 
+                        onChange={() => {}} 
+                        className="scale-105 accent-slate-900"
+                      />
+                    </td>
+                    <td className="p-3 font-medium text-slate-800">
+                      <span className="hidden print:inline mr-2">{formData.selectedTier === "core" ? "[X]" : "[ ]"}</span>
+                      Secure Core Architecture Deployment
+                    </td>
+                    <td className="p-3 text-right text-slate-600 font-medium">$699.00</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-medium text-slate-800">[ ] Smart Home &amp; Business Infrastructure Deployment</td>
-                    <td className="p-3 text-right text-slate-600">$1,399.00</td>
+                  <tr 
+                    className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === "smart" ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
+                    onClick={() => handleChange("selectedTier", "smart")}
+                  >
+                    <td className="p-3 text-center print:hidden">
+                      <input 
+                        type="radio" 
+                        name="tier" 
+                        checked={formData.selectedTier === "smart"} 
+                        onChange={() => {}}
+                        className="scale-105 accent-slate-900"
+                      />
+                    </td>
+                    <td className="p-3 font-medium text-slate-800">
+                      <span className="hidden print:inline mr-2">{formData.selectedTier === "smart" ? "[X]" : "[ ]"}</span>
+                      Smart Home &amp; Business Infrastructure Deployment
+                    </td>
+                    <td className="p-3 text-right text-slate-600 font-medium">$1,399.00</td>
                   </tr>
-                  <tr>
-                    <td className="p-3 font-medium text-slate-800">[ ] Bespoke Custom Premium Enterprise Blueprint Workflow</td>
-                    <td className="p-3 text-right text-slate-600">$_________________</td>
+                  <tr 
+                    className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === "custom" ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
+                    onClick={() => handleChange("selectedTier", "custom")}
+                  >
+                    <td className="p-3 text-center print:hidden">
+                      <input 
+                        type="radio" 
+                        name="tier" 
+                        checked={formData.selectedTier === "custom"} 
+                        onChange={() => {}}
+                        className="scale-105 accent-slate-900"
+                      />
+                    </td>
+                    <td className="p-3 font-medium text-slate-800">
+                      <span className="hidden print:inline mr-2">{formData.selectedTier === "custom" ? "[X]" : "[ ]"}</span>
+                      Bespoke Custom Premium Enterprise Blueprint Workflow
+                    </td>
+                    <td className="p-3 text-right text-slate-600 font-medium">
+                      <span className="print:hidden">$ </span>
+                      <input
+                        type="text"
+                        placeholder="_________________"
+                        value={formData.customPrice}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => handleChange("customPrice", e.target.value)}
+                        className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none print:border-none print:w-auto"
+                      />
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            
             <p className="text-xs text-slate-500 italic">
               *Terms: A baseline commencement deposit of 50% is due upon execution of this agreement. The remaining 50% balance is due instantly upon logical network handover, delivery of custom network blueprints, and administrative credential transfers.
             </p>
@@ -168,44 +339,78 @@ export default function ContractPage() {
           </section>
         </div>
 
-        {/* Signatures Block */}
-        <div className="mt-20 pt-12 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-12 print:mt-16 print:pt-8">
+        {/* Completely Symmetrical & Flexible Signatures Block */}
+        <div className="mt-20 pt-12 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-16 print:mt-16 print:pt-8">
           
-          {/* Provider Signature Column */}
+          {/* Left Side: Provider Authorization */}
           <div className="space-y-4">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Service Provider Authorization
             </div>
-            <div className="h-16 flex items-end pb-1 text-sm font-medium italic text-slate-800 font-mono tracking-wide">
-              Jedy
-            </div>
-            <div className="border-t border-slate-300 print:border-slate-400"></div>
-            <div className="text-sm">
-              <p className="font-semibold text-slate-800">Authorized Signature (Jedy)</p>
-              <p className="text-xs text-slate-500 mt-0.5">Lead Architect, Jedy Network &amp; Smart Home Design</p>
-            </div>
-            <div className="pt-2">
-              <span className="text-xs text-slate-400 mr-2">Date:</span>
-              <span className="text-sm border-b border-slate-300 w-24 inline-block print:border-slate-400">&nbsp;</span>
+            {/* Blank line frame for signature capture */}
+            <div className="h-16 border-b border-dashed border-slate-200 print:border-slate-300"></div>
+            
+            <div className="space-y-3">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Authorized Representative Name"
+                  value={formData.providerRep}
+                  onChange={(e) => handleChange("providerRep", e.target.value)}
+                  onBlur={() => handleBlur("providerRep")}
+                  className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-sm font-medium focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base"
+                />
+                <p className="text-xs text-slate-400 mt-1">Provider Representative Signature &amp; Title</p>
+              </div>
+
+              <div className="flex items-center gap-2 pt-1">
+                <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Date:</span>
+                <input
+                  type="date"
+                  value={formData.providerDate}
+                  onChange={(e) => handleChange("providerDate", e.target.value)}
+                  className="bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs focus:outline-none focus:border-slate-400 print:hidden"
+                />
+                <span className="hidden print:inline-block text-sm font-medium text-slate-900">
+                  {formatDateForPrint(formData.providerDate)}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Client Signature Column */}
+          {/* Right Side: Client Acceptance */}
           <div className="space-y-4">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Client Acceptance &amp; Authorization
             </div>
-            <div className="h-16"></div>
-            <div className="border-t border-slate-300 print:border-slate-400"></div>
-            <div className="text-sm">
-              <div className="h-5 border-b border-slate-200 w-full mb-1 print:border-slate-300"></div>
-              <p className="font-semibold text-slate-800">Client Signature</p>
-              <div className="h-5 border-b border-slate-200 w-full mt-2 print:border-slate-300"></div>
-              <p className="text-xs text-slate-500 mt-0.5">Printed Legal Name</p>
-            </div>
-            <div className="pt-2">
-              <span className="text-xs text-slate-400 mr-2">Date:</span>
-              <span className="text-sm border-b border-slate-300 w-24 inline-block print:border-slate-400">&nbsp;</span>
+            {/* Blank line frame for signature capture */}
+            <div className="h-16 border-b border-dashed border-slate-200 print:border-slate-300"></div>
+            
+            <div className="space-y-3">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Client Authorized Signatory"
+                  value={formData.clientName} // Synchronized automatically with upper metadata field
+                  onChange={(e) => handleChange("clientName", e.target.value)}
+                  onBlur={() => handleBlur("clientName")}
+                  className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-sm font-medium focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base"
+                />
+                <p className="text-xs text-slate-400 mt-1">Client Authorized Signature &amp; Title</p>
+              </div>
+
+              <div className="flex items-center gap-2 pt-1">
+                <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Date:</span>
+                <input
+                  type="date"
+                  value={formData.clientDate}
+                  onChange={(e) => handleChange("clientDate", e.target.value)}
+                  className="bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs focus:outline-none focus:border-slate-400 print:hidden"
+                />
+                <span className="hidden print:inline-block text-sm font-medium text-slate-900">
+                  {formatDateForPrint(formData.clientDate)}
+                </span>
+              </div>
             </div>
           </div>
 
