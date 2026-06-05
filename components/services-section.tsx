@@ -128,7 +128,7 @@ export function ServicesSection() {
                 <div className="mt-4 flex items-baseline justify-center gap-2">
                   {pkg.isStarting && (
                     <span className="text-lg font-normal text-muted-foreground/70 select-none mr-0.5">
-                      Starting at
+                      Starting
                     </span>
                   )}
                   {pkg.originalPrice && (
