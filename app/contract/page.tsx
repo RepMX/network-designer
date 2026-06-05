@@ -359,40 +359,13 @@ export default function ContractPage() {
             </div>
             
             <p className="text-xs text-slate-500 italic">
-              *Terms: A baseline commencement deposit of 50% is due upon execution of this agreement. The remaining 50% balance is due instantly upon logical network handover, delivery of network blueprints, and administrative credential transfers. Handover and final billing shall not be delayed or conditioned upon upstream ISP outages, backordered client-procured hardware components, or third-party client device enrollment.
+              *Terms: A baseline commencement deposit of 50% is due upon execution of this agreement. The remaining 50% balance is due instantly upon logical network handover, delivery of network blueprints, and administrative credential transfers. Handover and final billing shall not be delayed or conditioned upon upstream ISP outages, Dead-on-Arrival (DOA) hardware, procurement stalls, or third-party client device enrollment.
             </p>
           </section>
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              4. Tenant Permissions
-            </h2>
-            <p>
-              The Client warrants that they either own the subject property or have secured explicit written authorization from the property owner to execute the modifications, equipment mounting, and hardware placements detailed in the scope of work. The Client agrees to indemnify the Provider against any landlord or property management disputes arising from execution of this contract.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              5. Client Obligations & Access
-            </h2>
-            <p>
-              The Client agrees to provide active, operational Internet Service Provider (ISP) lines to the perimeter gateway position during configuration loops. The Client shall grant the Provider safe physical access to logical utility closets, enclosure frames, and property structures necessary to analyze radio frequency (RF) signal propagation path auditing and place hardware components.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              6. Local-First Data Sovereignty & Credential Transfers
-            </h2>
-            <p>
-              Systems are explicitly engineered to prioritize localized, local-first architectures ensuring privacy and operation completely independent of public cloud states. Upon project closure, all localized master administrator administrative login accounts, encrypted keys, logical gateway topologies, and configuration files will be completely transferred to the Client. The Provider retains zero backdoor access codes, passive remote loops, or data collection routes unless explicit off-site support retainers are established by separate instrument.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              7. Hardware Dead-on-Arrival (DOA) & Procurement Stalls
+              4. Hardware Dead-on-Arrival (DOA) & Procurement Stalls
             </h2>
             <p>
               The Client agrees to procure all required hardware within seven (7) business days of design approval to prevent project stalling. The Provider is not responsible for manufacturing defects, shipping delays, or hardware arriving Dead-on-Arrival (DOA). Extensive troubleshooting, processing manufacturer RMAs, or returning defective client-procured hardware is outside the flat-rate scope and will be billed under a separate change order.
@@ -401,7 +374,65 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              8. Limitation of Liability
+              5. Smart Home & IoT Automation Exclusions
+            </h2>
+            <p className="mb-3">
+              While the included service covers high-level logical architecture and smart home readiness framework planning, the physical deployment, software programming, and individual onboarding of the automation ecosystem are strictly excluded from the flat-rate service fee.
+            </p>
+            
+            <div className="bg-slate-50 border border-slate-200/60 rounded-lg p-4 space-y-3">
+              <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Explicitly Excluded Out-of-Scope Actions:
+              </div>
+              
+              <ul className="list-disc pl-4 space-y-2 text-xs text-slate-600">
+                <li>
+                  <strong className="text-slate-800">Server Provisioning & OS Installation:</strong> Physical flashing, bare-metal environment setups, hypervisor configuration (e.g., Proxmox, Docker containers), or operating system provisioning of a localized Home Assistant host environment.
+                </li>
+                <li>
+                  <strong className="text-slate-800">Software Architecture & Dashboards:</strong> Writing custom YAML scripts, building advanced logic automation paths, implementing third-party software integrations, and designing custom graphical UI/UX user tablet dashboards.
+                </li>
+                <li>
+                  <strong className="text-slate-800">IoT End-Node Device Onboarding:</strong> The manual pairing, cryptographic authentication, Zigbee/Z-Wave mesh optimization, or custom firmware flashing of individual client-owned smart switches, motorized shades, environmental sensors, and lighting arrays.
+                </li>
+              </ul>
+            </div>
+            
+            <p className="mt-3">
+              Any of the aforementioned server integration, software development, or device onboarding tasks may be dynamically appended to this project via a mutually executed written Change Order or established under an independent custom service engagement.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              6. Tenant Permissions
+            </h2>
+            <p>
+              The Client warrants that they either own the subject property or have secured explicit written authorization from the property owner to execute the modifications, equipment mounting, and hardware placements detailed in the scope of work. The Client agrees to indemnify the Provider against any landlord or property management disputes arising from execution of this contract.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              7. Client Obligations & Access
+            </h2>
+            <p>
+              The Client agrees to provide active, operational Internet Service Provider (ISP) lines to the perimeter gateway position during configuration loops. The Client shall grant the Provider safe physical access to logical utility closets, enclosure frames, and property structures necessary to analyze radio frequency (RF) signal propagation path auditing and place hardware components.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              8. Local-First Data Sovereignty & Credential Transfers
+            </h2>
+            <p>
+              Systems are explicitly engineered to prioritize localized, local-first architectures ensuring privacy and operation completely independent of public cloud states. Upon project closure, all localized master administrator administrative login accounts, encrypted keys, logical gateway topologies, and configuration files will be completely transferred to the Client. The Provider retains zero backdoor access codes, passive remote loops, or data collection routes unless explicit off-site support retainers are established by separate instrument.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
+              9. Limitation of Liability
             </h2>
             <p>
               The Provider's liability for any network disruptions, active intrusion attempts, software flaws in public third-party open-source stacks (e.g., Home Assistant Core updates), firmware vulnerabilities, or component hardware damage shall be legally capped at an amount not to exceed the total cash service fee paid to the Provider under this specific work order. The Provider is an independent infrastructure designer and is not responsible for upstream infrastructure outages originating from the Client's Internet Service Provider. Upon administrative credential transfer, the Client assumes absolute ownership and full responsibility for network security, password preservation, and system configuration backups. Any post-handover support, recovery of lost administrative access, or remediation of client-introduced configuration errors is explicitly excluded from this flat fee and will be treated as a new service engagement.
@@ -410,7 +441,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              9. Governing Law & Dispute Resolution
+              10. Governing Law & Dispute Resolution
             </h2>
             <p>
               This Agreement shall be governed by, and construed in accordance with, the laws of the State of California, with exclusive jurisdiction and venue in the courts of Los Angeles County. If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect. This instrument constitutes the entire agreement between the parties regarding this work order, superseding all prior oral agreements, text communications, or email negotiations. Amendments or modifications are valid only if executed in a mutually signed written change order.
