@@ -44,7 +44,7 @@ export default function NotFound() {
         <div className="mt-10">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 group shadow-lg shadow-primary/10"
+            className="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/25 whitespace-nowrap transition-all duration-200 group"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform duration-200" />
             Return to Home
