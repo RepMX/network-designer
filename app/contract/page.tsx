@@ -288,7 +288,7 @@ export default function ContractPage() {
               4. Payment Terms & Flat Fees
             </h2>
             <p>
-              Services are billed as a strict flat-rate project package fee, completely immune to hidden hourly extensions. The specified package total for this work order is detailed as:
+              Services are billed as a strict flat-rate project fee. No hourly extensions or additional fees will be applied without a mutually signed change order. The specified package total for this work order is detailed as:
             </p>
             
             <div className="my-3 border border-slate-200 rounded-md overflow-hidden">
