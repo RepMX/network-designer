@@ -32,7 +32,15 @@ const packages = [
       "Physical space RF coverage analysis and signal path auditing",
       "Full architecture and remote deployment of up to 8 core isolated VLANs",
       "UniFi Protect AI security camera & localized NVR storage integration",
-      "Infrastructure ready for AI smart home automation via Home Assistant*",
+      <span key="home-assistant-scope">
+        Infrastructure ready for AI smart home automation via{" "}
+        <img 
+          src="/home-assistant-logomark-monochrome-on-dark.svg" 
+          alt="Home Assistant Logo" 
+          className="inline-block h-4 w-4 align-middle mr-1 select-none"
+        />
+        Home Assistant*
+      </span>,
       "Optimized for prosumer and small business storefronts",
     ],
     popular: true,
