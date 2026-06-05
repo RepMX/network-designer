@@ -243,7 +243,7 @@ export default function ContractPage() {
               </label>
               <input
                 type="text"
-                placeholder="_______________"
+                placeholder="__________________"
                 value={formData.clientName}
                 onChange={(e) => handleChange("clientName", e.target.value)}
                 onBlur={() => handleBlur("clientName")}
@@ -440,23 +440,37 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="_______________"
+                    placeholder="Client Name"
                     value={formData.clientRep}
                     onChange={(e) => handleChange("clientRep", e.target.value)}
                     onBlur={() => handleBlur("clientRep")}
-                    className="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1 text-sm font-medium focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-semibold"
+                    className="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1 text-sm font-medium focus:outline-none focus:border-slate-400 print:hidden"
                   />
+                  <div className="hidden print:block text-base font-semibold text-slate-900">
+                    {formData.clientRep ? (
+                      formData.clientRep
+                    ) : (
+                      <div className="w-full border-b border-slate-300 h-6"></div>
+                    )}
+                  </div>
                   <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">Client Signatory Name</p>
                 </div>
                 <div>
                   <input
                     type="text"
-                    placeholder="_______________"
+                    placeholder="Property Tenant"
                     value={formData.clientTitle}
                     onChange={(e) => handleChange("clientTitle", e.target.value)}
                     onBlur={() => handleBlur("clientTitle")}
-                    className="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1 text-sm font-medium focus:outline-none focus:border-slate-400 print:bg-transparent print:border-none print:p-0 print:text-base print:font-semibold"
+                    className="w-full bg-slate-50 border border-slate-200 rounded px-2.5 py-1 text-sm font-medium focus:outline-none focus:border-slate-400 print:hidden"
                   />
+                  <div className="hidden print:block text-base font-semibold text-slate-900">
+                    {formData.clientTitle ? (
+                      formData.clientTitle
+                    ) : (
+                      <div className="w-full border-b border-slate-300 h-6"></div>
+                    )}
+                  </div>
                   <p className="text-[10px] text-slate-400 uppercase tracking-wider mt-1">Authorized Title</p>
                 </div>
               </div>
