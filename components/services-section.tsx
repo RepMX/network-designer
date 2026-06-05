@@ -35,7 +35,7 @@ const packages = [
       <span key="home-assistant-scope">
         Infrastructure ready for AI smart home automation via{" "}
         <span 
-          className="inline-block h-3.5 w-3.5 bg-current align-baseline translate-y-[2px] mr-1 select-none"
+          className="inline-block h-3.5 w-3.5 bg-current align-baseline translate-y-[2px] mr-1 ml-0.5 select-none"
           style={{
             WebkitMaskImage: 'url(/home-assistant-logomark-monochrome-on-dark.svg)',
             maskImage: 'url(/home-assistant-logomark-monochrome-on-dark.svg)',
