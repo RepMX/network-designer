@@ -261,7 +261,7 @@ export default function ContractPage() {
               1. Scope of Services
             </h2>
             <p>
-              The Provider agrees to perform technical architecture, engineering consulting, and optimization services as designated below. Services may include physical space environmental assessments, logical network topology blueprints, perimeter gateway security hardening (IDS/IPS configuration), strict logical VLAN network segmentation, and smart home readiness provisioning (including Home Assistant localized framework planning).
+              The Provider agrees to perform technical architecture, engineering consulting, installation, and optimization services as designated below. Services may include physical space environmental assessments, logical network topology blueprints, network equipment installation, perimeter gateway security hardening (IDS/IPS configuration), strict logical VLAN network segmentation, and smart home readiness provisioning (including Home Assistant localized framework planning).
             </p>
           </section>
 
@@ -270,7 +270,7 @@ export default function ContractPage() {
               2. Procurement & Zero Hardware Markup Policy
             </h2>
             <p>
-              The Provider operates under a strict transparent procurement model. **All core hardware components, enterprise routing gear, switches, and access points are provided with zero retail markup.** The Client shall purchase all recommended hardware components directly via verified manufacturer retail links provided by the Provider, or shall reimburse the Provider for the exact direct invoice cost of any procurement actions undertaken on the Client's behalf. All original manufacturer hardware warranties remain directly with the Client.
+              The Provider operates under a strict transparent procurement model. <em>All core hardware components, enterprise routing gear, switches, and access points are provided with zero retail markup.</em> The Client shall purchase all recommended hardware components directly via verified manufacturer retail links provided by the Provider, or shall reimburse the Provider for the exact direct invoice cost of any procurement actions undertaken on the Client's behalf. All original manufacturer hardware warranties remain directly with the Client.
             </p>
           </section>
 
