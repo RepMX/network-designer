@@ -2,12 +2,11 @@
 
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import tiersData from "@/data/tiers.json"
 
-const packages = [
+const localPackages = [
   {
-    name: "Secure Core",
-    price: "$699",
-    originalPrice: "$800",
+    id: "core",
     priceDetail: "Service Fee",
     hardware: "Optimized for UniFi Dream Router or Cloud Gateway compact architectures.",
     scope: [
@@ -21,9 +20,7 @@ const packages = [
     popular: false,
   },
   {
-    name: "Smart Home & Business",
-    price: "$1,399",
-    originalPrice: "$1,600",
+    id: "smart",
     priceDetail: "Service Fee",
     hardware:
       "Engineered for UniFi Cloud Gateway Max controllers, supporting up to 1 managed distribution switch and up to 2 high-throughput Access Points.",
@@ -54,8 +51,7 @@ const packages = [
     popular: true,
   },
   {
-    name: "Advanced Home & Business",
-    price: "$4,000",
+    id: "advanced",
     priceDetail: "Service Fee",
     hardware:
       "Enterprise Dream Machine Routing Consoles, supporting up to 4 UniFi Pro Level 3 managed distribution switches, and up to 6 multi-zone Access Points.",
@@ -80,6 +76,18 @@ export function ServicesSection() {
       window.location.hash = "contact"
     }
   }
+
+  // Synchronize JSON configuration states with local package content matrices
+  const packages = localPackages.map((pkg) => {
+    const matchedTier = tiersData.find((t) => t.id === pkg.id)
+    return {
+      ...pkg,
+      name: matchedTier?.name || "",
+      price: matchedTier?.displayPrice || "",
+      originalPrice: matchedTier?.originalPrice || null,
+      isStarting: matchedTier?.isStarting || false,
+    }
+  })
 
   return (
     <section id="services" className="select-none py-24 lg:py-32 bg-muted/30">
@@ -118,6 +126,11 @@ export function ServicesSection() {
               <div className="text-center">
                 <h3 className="text-lg font-semibold text-foreground">{pkg.name}</h3>
                 <div className="mt-4 flex items-baseline justify-center gap-2">
+                  {pkg.isStarting && (
+                    <span className="text-lg font-normal text-muted-foreground/70 select-none mr-0.5">
+                      Starting at
+                    </span>
+                  )}
                   {pkg.originalPrice && (
                     <span className="text-lg font-normal text-muted-foreground/70 line-through decoration-muted-foreground/50 select-none">
                       {pkg.originalPrice}

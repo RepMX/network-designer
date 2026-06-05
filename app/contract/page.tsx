@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Printer, ArrowLeft } from "lucide-react"
-import tiersData from "./tiers.json"
+import tiersData from "@/data/tiers.json"
 
 export default function ContractPage() {
   // Complete Form State Matrix
@@ -302,11 +302,11 @@ export default function ContractPage() {
                       </td>
                       <td className="p-3 font-medium text-slate-800">
                         {renderPrintCheckbox(formData.selectedTier === tier.id)}
-                        {tier.label}
+                        {tier.contractLabel}
                       </td>
                       <td className="p-3 text-right text-slate-600 font-medium">
                         {!tier.isCustom ? (
-                          <span>${tier.defaultPrice}</span>
+                          <span>{tier.contractPrice}</span>
                         ) : (
                           <>
                             {/* Interactive Screen Overlay Input */}
@@ -314,7 +314,7 @@ export default function ContractPage() {
                               <span className="mr-0.5">$</span>
                               <input
                                 type="text"
-                                placeholder={tier.defaultPrice || "_________________"}
+                                placeholder={tier.contractPrice ? tier.contractPrice.replace("$", "") : "_________________"}
                                 value={formData.customPrice}
                                 onClick={(e) => e.stopPropagation()}
                                 onChange={(e) => handleChange("customPrice", e.target.value)}
@@ -324,7 +324,7 @@ export default function ContractPage() {
                             </div>
                             {/* Static Print Layer Output */}
                             <span className="hidden print:inline text-slate-600 font-medium">
-                              {formData.customPrice ? `$${formData.customPrice}` : (tier.defaultPrice ? `$${tier.defaultPrice}` : "_________________")}
+                              {formData.customPrice ? `$${formData.customPrice}` : (tier.contractPrice || "_________________")}
                             </span>
                           </>
                         )}

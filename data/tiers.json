@@ -1,0 +1,32 @@
+[
+  {
+    "id": "core",
+    "name": "Secure Core",
+    "contractLabel": "Secure Core Architecture Deployment",
+    "displayPrice": "$699",
+    "contractPrice": "$699.00",
+    "originalPrice": "$800",
+    "isCustom": false,
+    "isStarting": false
+  },
+  {
+    "id": "smart",
+    "name": "Smart Home & Business",
+    "contractLabel": "Smart Home & Business Infrastructure Deployment",
+    "displayPrice": "$1,399",
+    "contractPrice": "$1,399.00",
+    "originalPrice": "$1,600",
+    "isCustom": false,
+    "isStarting": false
+  },
+  {
+    "id": "advanced",
+    "name": "Advanced Home & Business",
+    "contractLabel": "Advanced Home & Business Infrastructure Deployment",
+    "displayPrice": "$4,000",
+    "contractPrice": "$4,000.00",
+    "originalPrice": null,
+    "isCustom": true,
+    "isStarting": true
+  }
+]
