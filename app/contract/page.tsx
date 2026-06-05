@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import { Printer, ArrowLeft } from "lucide-react"
+import tiersData from "./tiers.json"
 
 export default function ContractPage() {
   // Complete Form State Matrix
@@ -284,81 +285,52 @@ export default function ContractPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
-                  <tr 
-                    className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === "core" ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
-                    onClick={() => handleChange("selectedTier", "core")}
-                  >
-                    <td className="p-3 text-center print:hidden">
-                      <input 
-                        type="radio" 
-                        name="tier" 
-                        checked={formData.selectedTier === "core"} 
-                        onChange={() => {}} 
-                        className="scale-105 accent-slate-900"
-                      />
-                    </td>
-                    <td className="p-3 font-medium text-slate-800">
-                      {renderPrintCheckbox(formData.selectedTier === "core")}
-                      Secure Core Architecture Deployment
-                    </td>
-                    <td className="p-3 text-right text-slate-600 font-medium">$699.00</td>
-                  </tr>
-                  <tr 
-                    className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === "smart" ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
-                    onClick={() => handleChange("selectedTier", "smart")}
-                  >
-                    <td className="p-3 text-center print:hidden">
-                      <input 
-                        type="radio" 
-                        name="tier" 
-                        checked={formData.selectedTier === "smart"} 
-                        onChange={() => {}}
-                        className="scale-105 accent-slate-900"
-                      />
-                    </td>
-                    <td className="p-3 font-medium text-slate-800">
-                      {renderPrintCheckbox(formData.selectedTier === "smart")}
-                      Smart Home &amp; Business Infrastructure Deployment
-                    </td>
-                    <td className="p-3 text-right text-slate-600 font-medium">$1,399.00</td>
-                  </tr>
-                  <tr 
-                    className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === "custom" ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
-                    onClick={() => handleChange("selectedTier", "custom")}
-                  >
-                    <td className="p-3 text-center print:hidden">
-                      <input 
-                        type="radio" 
-                        name="tier" 
-                        checked={formData.selectedTier === "custom"} 
-                        onChange={() => {}}
-                        className="scale-105 accent-slate-900"
-                      />
-                    </td>
-                    <td className="p-3 font-medium text-slate-800">
-                      {renderPrintCheckbox(formData.selectedTier === "custom")}
-                      Bespoke Custom Premium Enterprise Blueprint Workflow
-                    </td>
-                    <td className="p-3 text-right text-slate-600 font-medium">
-                      {/* Screen View */}
-                      <div className="print:hidden inline-flex items-center justify-end text-slate-600 font-medium">
-                        <span className="mr-0.5">$</span>
-                        <input
-                          type="text"
-                          placeholder="_________________"
-                          value={formData.customPrice}
-                          onClick={(e) => e.stopPropagation()}
-                          onChange={(e) => handleChange("customPrice", e.target.value)}
-                          onBlur={handleCustomPriceBlur}
-                          className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none text-slate-600 font-medium placeholder:text-slate-400"
+                  {tiersData.map((tier) => (
+                    <tr 
+                      key={tier.id}
+                      className={`transition-colors cursor-pointer print:bg-transparent ${formData.selectedTier === tier.id ? "bg-blue-50/50" : "hover:bg-slate-50/50"}`}
+                      onClick={() => handleChange("selectedTier", tier.id)}
+                    >
+                      <td className="p-3 text-center print:hidden">
+                        <input 
+                          type="radio" 
+                          name="tier" 
+                          checked={formData.selectedTier === tier.id} 
+                          onChange={() => {}} 
+                          className="scale-105 accent-slate-900"
                         />
-                      </div>
-                      {/* Print View */}
-                      <span className="hidden print:inline text-slate-600 font-medium">
-                        {formData.customPrice ? `$${formData.customPrice}` : "_________________"}
-                      </span>
-                    </td>
-                  </tr>
+                      </td>
+                      <td className="p-3 font-medium text-slate-800">
+                        {renderPrintCheckbox(formData.selectedTier === tier.id)}
+                        {tier.label}
+                      </td>
+                      <td className="p-3 text-right text-slate-600 font-medium">
+                        {!tier.isCustom ? (
+                          <span>${tier.defaultPrice}</span>
+                        ) : (
+                          <>
+                            {/* Interactive Screen Overlay Input */}
+                            <div className="print:hidden inline-flex items-center justify-end text-slate-600 font-medium">
+                              <span className="mr-0.5">$</span>
+                              <input
+                                type="text"
+                                placeholder={tier.defaultPrice || "_________________"}
+                                value={formData.customPrice}
+                                onClick={(e) => e.stopPropagation()}
+                                onChange={(e) => handleChange("customPrice", e.target.value)}
+                                onBlur={handleCustomPriceBlur}
+                                className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none text-slate-600 font-medium placeholder:text-slate-400"
+                              />
+                            </div>
+                            {/* Static Print Layer Output */}
+                            <span className="hidden print:inline text-slate-600 font-medium">
+                              {formData.customPrice ? `$${formData.customPrice}` : (tier.defaultPrice ? `$${tier.defaultPrice}` : "_________________")}
+                            </span>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

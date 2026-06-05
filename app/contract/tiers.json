@@ -1,0 +1,20 @@
+[
+  {
+    "id": "core",
+    "label": "Secure Core Deployment",
+    "defaultPrice": "699.00",
+    "isCustom": true
+  },
+  {
+    "id": "smart",
+    "label": "Smart Home & Business Deployment",
+    "defaultPrice": "1,399.00",
+    "isCustom": true
+  },
+  {
+    "id": "custom",
+    "label": "Advanced Home & Business Deployment",
+    "defaultPrice": "2,999.00",
+    "isCustom": true
+  }
+]
