@@ -170,13 +170,11 @@ export default function ContractPage() {
             </div>
           </div>
 
-          {/* Right Column: Project Address Layout */}
           <div className="space-y-1">
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
               Project / Property Address
             </label>
             
-            {/* Interactive Form Engine */}
             <div className="space-y-1.5 print:hidden">
               <input
                 type="text"
@@ -214,10 +212,21 @@ export default function ContractPage() {
 
             {/* Clean Print Outputs */}
             <div className="hidden print:block text-base font-semibold text-slate-900 leading-normal">
-              <div>{formData.streetAddress || "—"}</div>
-              <div className="font-normal text-slate-900 mt-0.5">
-                {formData.city}{formData.city && (formData.state || formData.zipCode) ? ", " : ""}{formData.state} {formData.zipCode}
-              </div>
+              {formData.streetAddress.trim() || formData.city.trim() || formData.state.trim() || formData.zipCode.trim() ? (
+                <>
+                  <div>{formData.streetAddress.trim() || "—"}</div>
+                  <div className="font-normal text-slate-900 mt-0.5">
+                    {formData.city.trim()}
+                    {formData.city.trim() ? ", " : ""}
+                    {formData.state.trim() || "CA"} {formData.zipCode.trim()}
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-4 pt-1 w-full max-w-md">
+                  <div className="border-b border-slate-300 h-5"></div>
+                  <div className="border-b border-slate-300 h-5"></div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -253,7 +262,7 @@ export default function ContractPage() {
                 {formData.clientName ? (
                   formData.clientName
                 ) : (
-                  <div className="w-65 border-b border-slate-300 h-6"></div>
+                  <div className="w-full max-w-md border-b border-slate-300 h-6"></div>
                 )}
               </div>
             </div>
@@ -494,7 +503,7 @@ export default function ContractPage() {
                   {formData.clientDate ? (
                     formatDateForPrint(formData.clientDate)
                   ) : (
-                    <span className="inline-block border-b border-slate-300 w-25 h-4"></span>
+                    <span className="inline-block border-b border-slate-300 w-24 h-4"></span>
                   )}
                 </span>
               </div>
