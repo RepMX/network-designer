@@ -150,7 +150,7 @@ export default function ContractPage() {
           </div>
           <div className="text-left sm:text-right">
             <div className="text-lg font-bold tracking-tight text-slate-950">
-              jedy <span className="font-normal text-slate-400">| Network &amp; Smart Home Design</span>
+              jedy <span className="font-normal text-slate-400">| Network & Smart Home Design</span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">design.jedy.cc</p>
           </div>
@@ -165,7 +165,7 @@ export default function ContractPage() {
               Service Provider
             </label>
             <div className="text-sm sm:text-base print:text-base font-semibold text-slate-800 leading-normal">
-              <div>Jedy Network &amp; Smart Home Design</div>
+              <div>Jedy Network & Smart Home Design</div>
               <div className="text-slate-500 font-normal mt-0.5">Los Angeles, CA</div>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              2. Procurement &amp; Zero Hardware Markup Policy
+              2. Procurement & Zero Hardware Markup Policy
             </h2>
             <p>
               The Provider operates under a strict transparent procurement model. **All core hardware components, enterprise routing gear, switches, and access points are provided with zero retail markup.** The Client shall purchase all recommended hardware components directly via verified manufacturer retail links provided by the Provider, or shall reimburse the Provider for the exact direct invoice cost of any procurement actions undertaken on the Client's behalf. All original manufacturer hardware warranties remain directly with the Client.
@@ -276,7 +276,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              3. Client Obligations &amp; Access
+              3. Client Obligations & Access
             </h2>
             <p>
               The Client agrees to provide active, operational Internet Service Provider (ISP) lines to the perimeter gateway position during configuration loops. The Client shall grant the Provider safe physical access to logical utility closets, enclosure frames, and property structures necessary to analyze radio frequency (RF) signal propagation path auditing and place hardware components.
@@ -285,7 +285,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              4. Payment Terms &amp; Flat Fees
+              4. Payment Terms & Flat Fees
             </h2>
             <p>
               Services are billed as a strict flat-rate project package fee, completely immune to hidden hourly extensions. The specified package total for this work order is detailed as:
@@ -358,7 +358,7 @@ export default function ContractPage() {
 
           <section>
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">
-              5. Local-First Data Sovereignty &amp; Credential Transfers
+              5. Local-First Data Sovereignty & Credential Transfers
             </h2>
             <p>
               Systems are explicitly engineered to prioritize localized, local-first architectures ensuring privacy and operation completely independent of public cloud states. Upon project closure, all localized master administrator administrative login accounts, encrypted keys, logical gateway topologies, and configuration files will be completely transferred to the Client. The Provider retains zero backdoor access codes, passive remote loops, or data collection routes unless explicit off-site support retainers are established by separate instrument.
@@ -402,7 +402,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Title (e.g. Architect)"
+                    placeholder="Owner"
                     value={formData.providerTitle}
                     onChange={(e) => handleChange("providerTitle", e.target.value)}
                     onBlur={() => handleBlur("providerTitle")}
@@ -430,7 +430,7 @@ export default function ContractPage() {
           {/* Right Side: Client Column */}
           <div className="space-y-4">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Client Acceptance &amp; Authorization
+              Client Acceptance & Authorization
             </div>
             {/* Signature Capture Anchor Line */}
             <div className="h-16 border-b border-dashed border-slate-200 print:border-slate-300"></div>
@@ -440,7 +440,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Signatory Name"
+                    placeholder="Client Name"
                     value={formData.clientRep}
                     onChange={(e) => handleChange("clientRep", e.target.value)}
                     onBlur={() => handleBlur("clientRep")}
@@ -451,7 +451,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Title (e.g. Owner)"
+                    placeholder="Property Tenant"
                     value={formData.clientTitle}
                     onChange={(e) => handleChange("clientTitle", e.target.value)}
                     onBlur={() => handleBlur("clientTitle")}
