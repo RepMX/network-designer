@@ -391,7 +391,7 @@ export default function ContractPage() {
                 <div>
                   <input
                     type="text"
-                    placeholder="Representative Name"
+                    placeholder="Provider Name"
                     value={formData.providerRep}
                     onChange={(e) => handleChange("providerRep", e.target.value)}
                     onBlur={() => handleBlur("providerRep")}
