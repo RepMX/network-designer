@@ -484,7 +484,11 @@ export default function ContractPage() {
                   className="bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs focus:outline-none focus:border-slate-400 print:hidden"
                 />
                 <span className="hidden print:inline-block text-sm font-medium text-slate-900">
-                  {formatDateForPrint(formData.clientDate)}
+                  {formData.clientDate ? (
+                    formatDateForPrint(formData.clientDate)
+                  ) : (
+                    <span className="inline-block border-b border-slate-300 w-28 h-4"></span>
+                  )}
                 </span>
               </div>
             </div>
