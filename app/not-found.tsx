@@ -28,12 +28,12 @@ export default function NotFound() {
         </div>
 
         {/* Error Status */}
-        <span className="text-xs font-mono tracking-widest text-primary uppercase font-semibold">
+        <span className="text-xs tracking-widest text-primary uppercase font-semibold">
           Error Code: 404
         </span>
         
         <h1 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          Route Not Found
+          Page Not Found
         </h1>
         
         <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
@@ -44,10 +44,10 @@ export default function NotFound() {
         <div className="mt-10">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 group shadow-lg shadow-primary/10"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all duration-200 group shadow-lg shadow-primary/10"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform duration-200" />
-            Return to Core Node
+            Return to Home
           </Link>
         </div>
       </div>
