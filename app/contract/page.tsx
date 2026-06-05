@@ -159,7 +159,7 @@ export default function ContractPage() {
               Project / Property Address
             </label>
             
-            {/* Interactive Form Engine (Hidden on print to drop dynamic field padding) */}
+            {/* Interactive Form Engine */}
             <div className="space-y-1.5 print:hidden">
               <input
                 type="text"
@@ -341,7 +341,7 @@ export default function ContractPage() {
                     </td>
                     <td className="p-3 text-right text-slate-600 font-medium">
                       {/* Screen View */}
-                      <div className="print:hidden inline-flex items-center justify-end">
+                      <div className="print:hidden inline-flex items-center justify-end text-slate-600 font-medium">
                         <span className="mr-0.5">$</span>
                         <input
                           type="text"
@@ -350,11 +350,11 @@ export default function ContractPage() {
                           onClick={(e) => e.stopPropagation()}
                           onChange={(e) => handleChange("customPrice", e.target.value)}
                           onBlur={handleCustomPriceBlur}
-                          className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none"
+                          className="bg-transparent border-b border-transparent hover:border-slate-300 focus:border-slate-500 text-right w-28 focus:outline-none text-slate-600 font-medium placeholder:text-slate-400"
                         />
                       </div>
                       {/* Print View */}
-                      <span className="hidden print:inline text-slate-900 font-medium">
+                      <span className="hidden print:inline text-slate-600 font-medium">
                         {formData.customPrice ? `$${formData.customPrice}` : "_________________"}
                       </span>
                     </td>
