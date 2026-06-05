@@ -280,7 +280,7 @@ export default function ContractPage() {
                 <thead className="bg-slate-50 text-slate-500 font-semibold print:bg-transparent">
                   <tr>
                     <th className="p-3 w-12 text-center print:hidden">Select</th>
-                    <th className="p-3">Selected Service Architecture Tier</th>
+                    <th className="p-3">Selected Service Tier</th>
                     <th className="p-3 text-right">Flat Service Fee</th>
                   </tr>
                 </thead>
